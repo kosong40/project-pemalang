@@ -1,0 +1,2 @@
+{!!Kustom::form(Form::text("kepala-keluarga", old('kepala-keluarga'), ['class'=>'form-control','placeholder'=>'Nama Kepala Keluarga']),"Nama Kepala Keluarga")!!}
+{!!Kustom::form(Form::text("nomor-kk", old('nomor-kk'), ['class'=>'form-control','placeholder'=>'Nomor Kartu Keluarga']),"Nomor Kartu Keluarga")!!}

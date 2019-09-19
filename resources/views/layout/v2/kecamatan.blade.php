@@ -14,6 +14,7 @@
     <link href="{{url('adminbite/assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{url('adminbite/assets/libs/morris.js/morris.css')}}" rel="stylesheet">
     <link href="{{url('adminbite/dist/css/style.min.css')}}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('css')
 </head>
 

@@ -57,7 +57,7 @@
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Kata Sandi <span id="teks" style="color:red">Caps Lock menyala</span></label>
                             <input type="password" name="password" id="form-password" autocomplete="off">
-                            <a onclick="show()" href="#"><i class="ti-lock"> </i></a>
+                            <a onclick="show()" href="#"><i id="ikon" class="ti-lock"> </i></a>
                            
                         </div>
                         @php
@@ -131,8 +131,10 @@
             var x = document.getElementById("form-password");
             if(x.type == "password"){
                 x.type = "text";
+                $("#ikon").removeClass("ti-lock").addClass("ti-unlock")
             }else{
                 x.type = "password";
+                $("#ikon").removeClass("ti-unlock").addClass("ti-lock")
             }
         }
     </script>

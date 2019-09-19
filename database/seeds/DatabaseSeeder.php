@@ -47,6 +47,16 @@ class DatabaseSeeder extends Seeder
                 'daerah_id' =>13 ,
                 'level' => "1",
                 'created_at' => now(+7.00)
+            ],
+            [
+                'username'=>'AdminBanjarmulya',
+                'password'=>bcrypt('AdminBanjarmulya'),
+                'email'=>'mdcnugroho@student.undip.ac.id',
+                'nama'=>'Muchammad Dwi Cahyo Nugroho',
+                'kontak'=>'082326464265',
+                'daerah_id' =>1 ,
+                'level' => "2",
+                'created_at' => now(+7.00)
             ]
         ]);
         DB::table('levels')->insert([

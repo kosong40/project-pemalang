@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\kustom;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/testing', function () {
-return view('testing');
+//  return view('testing');  
 });
 Route::get('/tes', 'KecamatanV2@cek');
 Route::post('/testing/upload', 'AdminController@testing');
@@ -92,9 +93,14 @@ Route::group(['middleware' => ['sesi']], function () {
         route::post('/formulir/izin-usaha-mikro-dan-kecil', 'DesaV2@formIUMK')->name('form-izin-usaha-mikro-dan-kecil');
         route::post('/formulir/salon-kecantikan', 'DesaV2@formSK')->name('form-salon-kecantikan');
         route::post('/formulir/rumah-makan', 'DesaV2@formRM')->name('form-rumah-makan');
-        route::post('/formuilr/gelanggang-ketangkasan', 'DesaV2@formGK')->name('form-gelanggang-ketangkasan');
-        route::post('/formuilr/atraksi-wisata', 'DesaV2@formAW')->name('form-atraksi-wisata');
-        route::post('/formuilrdispensasi-nikah', 'DesaV2@formDN')->name('form-dispensasi-nikah');
+        route::post('/formulir/gelanggang-ketangkasan', 'DesaV2@formGK')->name('form-gelanggang-ketangkasan');
+        route::post('/formulir/atraksi-wisata', 'DesaV2@formAW')->name('form-atraksi-wisata');
+        route::post('/formulir/dispensasi-nikah', 'DesaV2@formDN')->name('form-dispensasi-nikah');
+        route::post('/formuli/pindah-pergi-datang-antar-desa','DesaV2@FormPPDD')->name('form-pindah-pergi-datang-antar-desa');
+        route::post('/formulir/pindah-pergi-antar-kecamatan','DesaV2@FormPPAK')->name('form-pindah-pergi-antar-kecamatan');
+        route::post('formulir/pindah-pergi-antar-kabupaten','DesaV2@FormPPAKab')->name('form-pindah-pergi-antar-kabupaten');
+        route::post('/formulir/pindah-datang-antar-kecamatan','DesaV2@FormPDAK')->name('form-pindah-datang-antar-kecamatan');
+        route::post('/formulir/pindah-datang-antar-kabupaten','DesaV2@FormPDAKab')->name('form-pindah-datang-antar-kabupaten');
 
         route::get('/data-pemohon', 'DesaV2@datalayanan');
         route::get('/data-pemohon/{slug}', 'DesaV2@datapemohonDetail');

@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Jalan/ Dusun/ Dukuh</label>
+                <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Dusun/ Dukuh</label>
                 <div class="col-sm-9">
                 <input type="text" value="{{old('jalan')}}" class="form-control @if($errors->get('jalan')) is-invalid @endif" name="jalan" placeholder="Jalan/ Dusun/ Dukuh">
                 @if($errors->get('jalan'))
@@ -111,7 +111,7 @@
             <div class="form-group row">
                 <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
                 <div class="col-sm-9">
-                <input type="text" class="form-control" nama="desa" value="{{$daerah->nama_daerah}}" placeholder="{{$daerah->jenis_daerah}}">
+                <input readonly type="text" class="form-control" nama="desa" value="{{$daerah->nama_daerah}}" placeholder="{{$daerah->jenis_daerah}}">
                 </div>
             </div>
             <div class="form-group row">

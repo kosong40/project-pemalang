@@ -427,14 +427,56 @@ class kustom
     {
         return count(DB::table("pemohons")->whereDate('created_at', DB::raw("CURDATE()+$i"))->get());
     }
-    public static function form($tipe,$name,$placeholder,$class = null,$value = null)
+    public static function form($input,$label)
     {
         return "<div class='form-group row'>
-        <label  class='col-sm-3 text-right control-label col-form-label'>".$placeholder."</label>
+        <label  class='col-sm-3 text-right control-label col-form-label'>".$label."</label>
         <div class='col-sm-9'>
-            <input type=".$tipe." value='".$value."' class='form-control ".$class."' name='".$name."' placeholder='".$placeholder."'>
+            ".$input."
         </div>
         </div>
         ";
+    }
+    public static function getDay($date)
+    {
+        $hari = null;
+        switch (date("l",strtotime($date))) {
+            case 'Wednesday':$hari = "Rabu, ";break;
+            case 'Monday':$hari = "Senin, ";break;
+            case 'Tuesday':$hari = "Selasa, ";break;
+            case 'Thursday':$hari = "Kamis, ";break;
+            case 'Friday':$hari = "Jumat, ";break;
+            case 'Saturday':$hari = "Sabtu, ";break;
+            case 'Sunday':$hari = "Minggu, ";break;
+            default:$hari = date("l");break;
+        }
+        return $hari;
+    }
+    public static function getTanggal($date)
+    {
+        $m;
+        switch(date("m",strtotime($date))){
+            case '01':$m = "Januari";break;
+            case '02':$m = "Februari";break;
+            case '03':$m = "Maret";break;
+            case '04':$m = "April";break;
+            case '05':$m = "Mei";break;
+            case '06':$m = "Juni";break;
+            case '07':$m = "Juli";break;
+            case '08':$m = "Agustus";break;
+            case '09':$m = "Spetember";break;
+            case '10':$m = "Oktober";break;
+            case '11':$m = "November";break;
+            case '12':$m = "Desember";break;
+        }
+        return date('d',strtotime($date))." ".$m." ".date('Y',strtotime($date));
+    }
+    public static function imp($data = array())
+    {
+        return implode(",",$data);
+    }
+    public static function exp($data = array())
+    {
+        return explode(",",$data);
     }
 }
