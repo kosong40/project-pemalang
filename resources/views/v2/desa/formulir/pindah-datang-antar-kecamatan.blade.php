@@ -89,10 +89,33 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Desa / Kelurahan</label>
         <div class="col-sm-9">
-            <input readonly type="text" class="form-control" nama="desa_1" value="{{$daerah->nama_daerah}}"
-                placeholder="{{$daerah->jenis_daerah}}">
+            <input type="text" value="{{old('desa_1')}}"
+            class="form-control @if($errors->get('desa_1')) is-invalid @endif" name="desa_1"
+            placeholder="Desa / Kelurahan">
+            @if($errors->get('desa_1'))
+            @foreach ($errors->get('desa_1') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Kecamatan</label>
+        <div class="col-sm-9">
+            <input type="text" value="{{old('kecamatan_1')}}"
+            class="form-control @if($errors->get('kecamatan_1')) is-invalid @endif" name="kecamatan_1"
+            placeholder="Kecamatan">
+            @if($errors->get('kecamatan_1'))
+            @foreach ($errors->get('kecamatan_1') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -214,10 +237,31 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Desa / Kelurahan</label>
         <div class="col-sm-9">
             <input type="text" value="{{old('desa_2')}}"
-                class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2" placeholder="Desa">
+            class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2"
+            placeholder="Desa / Kelurahan">
+            @if($errors->get('desa_2'))
+            @foreach ($errors->get('desa_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
+        <div class="col-sm-9">
+            {{-- <input type="text" value="{{old('desa_2')}}"
+                class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2" placeholder="Desa"> --}}
+            <select name="desa_2" class="form-control">
+                <option>Pilih</option>
+                @foreach ($daerahs as $item)
+                    <option value="{{$item->nama_daerah}}">{{$item->nama_daerah}}</option>
+                @endforeach
+            </select>
             @if($errors->get('desa_2'))
             @foreach ($errors->get('desa_2') as $pesan)
             <div class="invalid-feedback">
@@ -250,46 +294,6 @@
                 placeholder="Telepon">
             @if($errors->get('telepon_2'))
             @foreach ($errors->get('telepon_2') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Jenis Kepindahan</label>
-        <div class="col-sm-9">
-            <select name="jenis_pindah" class="form-control @if($errors->get('jenis_pindah')) is-invalid @endif"
-                required>
-                <option selected>Pilih</option>
-                <option value="1">Kep. Keluarga</option>
-                <option value="2">Kep. Keluarga dan Seluruh Anggota Keluarga</option>
-                <option value="3">Kep. Keluarga dan Sebagian Anggota Keluarga</option>
-                <option value="4">Anggota Keluarga</option>
-            </select>
-            @if($errors->get('jenis_pindah'))
-            @foreach ($errors->get('jenis_pindah') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Status KK (yang Tidak
-            Pindah)</label>
-        <div class="col-sm-9">
-            <select name="stat_kk_nonpindah"
-                class="form-control @if($errors->get('stat_kk_nonpindah')) is-invalid @endif" required>
-                <option selected>Pilih</option>
-                <option value="1">Numpang KK</option>
-                <option value="2">Membuat KK Baru</option>
-                <option value="3">Nomor KK Tetap</option>
-            </select>
-            @if($errors->get('stat_kk_nonpindah'))
-            @foreach ($errors->get('stat_kk_nonpindah') as $pesan)
             <div class="invalid-feedback">
                 {{$pesan}}
             </div>
