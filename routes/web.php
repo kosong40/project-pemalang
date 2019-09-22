@@ -15,7 +15,7 @@ use App\Helpers\kustom;
 */
 
 Route::get('/testing', function () {
-//  return view('testing');  
+ return view('testing');  
 });
 Route::get('/tes', 'KecamatanV2@cek');
 Route::post('/testing/upload', 'AdminController@testing');
