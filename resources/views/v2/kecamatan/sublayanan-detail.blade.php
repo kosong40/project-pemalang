@@ -1,7 +1,6 @@
 @extends('layout.v2.kecamatan')
 @section('title',"Pemohon $data->nama ($data->kode)")
 @section('breadcrumb')
-<li class="breadcrumb-item"><a href="{{url('kecamatan/v2/')}}">Beranda</a></li>
 <li class="breadcrumb-item"><a href="{{url('kecamatan/v2/data-layanan')}}">Data Layanan</a></li>
 <li class="breadcrumb-item"><a href="{{url('kecamatan/v2/data-layanan/'.$layanan->slug)}}">{{$layanan->pelayanan}}</a></li>
 <li class="breadcrumb-item"><a href="{{url('kecamatan/v2/data-layanan/'.$layanan->slug.'/'.$sublayanan->slug)}}">{{$sublayanan->subpelayanan}}</a></li>

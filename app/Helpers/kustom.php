@@ -479,4 +479,30 @@ class kustom
     {
         return explode(",",$data);
     }
+    public static function shdk($no){
+        if($no ==1){
+            return "Kepala Keluarga";
+        }elseif($no == 2){
+            return "Suami";
+        }elseif($no == 3){
+            return "Istri";
+        }elseif($no == 4){
+            return "Anak";
+        }elseif($no == 5){
+            return "Menantu";
+        }elseif($no == 6){
+            return "Cucu";
+        }elseif($no == 7){
+            return "Orangtua";
+        }elseif($no == 8){
+            return "Mertua";
+        }elseif($no == 9){
+            return "Famili Lain";
+        }elseif($no == 10){
+            return "Pembantu";
+        }elseif($no == 11){
+            return "Lainnya";
+        }
+
+    }
 }

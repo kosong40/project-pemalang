@@ -1,5 +1,6 @@
 <div class="card-body">
     <h4 class="card-title">Detail Daerah Asal</h4>
+    <input type="hidden" name="sublayanan_id" value="{{$sublayanan->id}}">
     <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nomor Kartu Keluarga</label>
         <div class="col-sm-9">
@@ -153,32 +154,6 @@
 <div class="card-body">
     <h4 class="card-title">Data Kepindahan</h4>
     <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alasan Pindah</label>
-        <div class="col-sm-9">
-            <select id="alasan" name="alasan[]" class="form-control @if($errors->get('alasan')) is-invalid @endif"
-                required>
-                <option selected>Pilih</option>
-                <option value="1">Pekerjaan</option>
-                <option value="2">Pendidikan</option>
-                <option value="3">Keamanan</option>
-                <option value="4">Kesehatan</option>
-                <option value="5">Perumahan</option>
-                <option value="6">Keluarga</option>
-                <option value="7">Lainnya</option>
-            </select>
-            <input type="text" value="{{old('alasan')}}"
-                class="mt-3 form-control @if($errors->get('alasan')) is-invalid @endif" name="alasan[]"
-                placeholder="Alasan" id="alasanInput">
-            @if($errors->get('alasan'))
-            @foreach ($errors->get('alasan') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alamat</label>
         <div class="col-sm-9">
             <input type="text" value="{{old('alamat_2')}}"
@@ -229,21 +204,6 @@
                 placeholder="Dusun/ Dukuh">
             @if($errors->get('dusun_2'))
             @foreach ($errors->get('dusun_2') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Desa / Kelurahan</label>
-        <div class="col-sm-9">
-            <input type="text" value="{{old('desa_2')}}"
-            class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2"
-            placeholder="Desa / Kelurahan">
-            @if($errors->get('desa_2'))
-            @foreach ($errors->get('desa_2') as $pesan)
             <div class="invalid-feedback">
                 {{$pesan}}
             </div>
@@ -321,6 +281,51 @@
         </div>
     </div>
     @include('v2/desa/formulir/keluarga')
+    <div class="card-body">
+        <h4 class="card-title">Berkas Lampiran</h4>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Pengantar Pembuatan KTP dan KK dari Desa/Kelurahan</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('buat_ktp_kk')) is-invalid @endif" name="buat_ktp_kk">
+                @if($errors->get('buat_ktp_kk'))
+                    @foreach ($errors->get('buat_ktp_kk') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Form 1-31</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('form_131')) is-invalid @endif" name="form_131">
+                @if($errors->get('form_131'))
+                    @foreach ($errors->get('form_131') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Form 1-30</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('form_130')) is-invalid @endif" name="form_130">
+                @if($errors->get('form_130'))
+                    @foreach ($errors->get('form_130') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+    </div>
 </div>
 @section('js')
 <script>

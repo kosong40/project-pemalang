@@ -392,7 +392,7 @@
             </div>
         </div>
         <br>
-        
+    
 </div>
 @section('js')
 <script>

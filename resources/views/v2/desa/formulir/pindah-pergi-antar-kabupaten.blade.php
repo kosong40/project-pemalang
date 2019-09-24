@@ -1,5 +1,6 @@
 <div class="card-body">
     <h4 class="card-title">Detail Daerah Asal</h4>
+    <input type="hidden" name="sublayanan_id" value="{{$sublayanan->id}}">
     <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nomor Kartu Keluarga</label>
         <div class="col-sm-9">
@@ -156,6 +157,85 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Provinsi</label>
+        <div class="col-sm-9">
+            <select id="provinsi" name="provinsi_2[]" class="select2 form-control @if($errors->get('provinsi_2')) is-invalid @endif"
+                required style="width: 100%; height:36px;">
+                <option value="">Pilih Provinsi</option>
+            </select>
+            @if($errors->get('provinsi_2'))
+            @foreach ($errors->get('provinsi_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Kabupaten/Kota</label>
+        <div class="col-sm-9">
+            <select id="kabupaten" name="kabupaten_2[]" class="select2 form-control @if($errors->get('kabupaten_2')) is-invalid @endif"
+                required style="width: 100%; height:36px;">
+                <option value="">Pilih Kabupaten/Kota</option>
+            </select>
+            @if($errors->get('kabupaten_2'))
+            @foreach ($errors->get('kabupaten_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Kecamatan</label>
+        <div class="col-sm-9">
+            <select id="kecamatan" name="kecamatan_2[]" class="select2 form-control @if($errors->get('kecamatan_2')) is-invalid @endif"
+                required  style="width: 100%; height:36px;">
+                <option value="">Pilih Kecamatan</option>
+            </select>
+            @if($errors->get('kecamatan_2'))
+            @foreach ($errors->get('kecamatan_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Desa/Kelurahan</label>
+            <div class="col-sm-9" >
+                <select id="desa" name="desa_2[]" class="select2 form-control @if($errors->get('desa_2')) is-invalid @endif"
+                    required  style="width: 100%; height:36px;">
+                    <option value="">Pilih Desa/Kelurahan</option>
+                </select>
+                @if($errors->get('desa_2'))
+                @foreach ($errors->get('desa_2') as $pesan)
+                <div class="invalid-feedback">
+                    {{$pesan}}
+                </div>
+                @endforeach
+                @endif
+            </div>
+        </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Dusun/ Dukuh</label>
+        <div class="col-sm-9">
+            <input type="text" value="{{old('dusun_2')}}"
+                class="form-control @if($errors->get('dusun_2')) is-invalid @endif" name="dusun_2"
+                placeholder="Dusun/ Dukuh">
+            @if($errors->get('dusun_2'))
+            @foreach ($errors->get('dusun_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alamat</label>
         <div class="col-sm-9">
             <input type="text" value="{{old('alamat_2')}}"
@@ -191,35 +271,6 @@
                 name="rw_2" placeholder="RW">
             @if($errors->get('rw_2'))
             @foreach ($errors->get('rw_2') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Dusun/ Dukuh</label>
-        <div class="col-sm-9">
-            <input type="text" value="{{old('dusun_2')}}"
-                class="form-control @if($errors->get('dusun_2')) is-invalid @endif" name="dusun_2"
-                placeholder="Dusun/ Dukuh">
-            @if($errors->get('dusun_2'))
-            @foreach ($errors->get('dusun_2') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
-        <div class="col-sm-9">
-            <input type="text" value="{{old('desa_2')}}"
-                class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2" placeholder="Desa">
-            @if($errors->get('desa_2'))
-            @foreach ($errors->get('desa_2') as $pesan)
             <div class="invalid-feedback">
                 {{$pesan}}
             </div>
@@ -319,6 +370,10 @@
     @include('v2/desa/formulir/keluarga')
 </div>
 @section('js')
+<script src="{{url('js/axios.js')}}"></script>
+<script src="{{url('adminbite/assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{url('adminbite/assets/libs/select2/dist/js/select2.min.js')}}"></script>
+<script src="{{url('adminbite/dist/js/pages/forms/select2/select2.init.js')}}"></script>
 <script>
     $(document).ready(function () {
        
@@ -357,7 +412,51 @@
             $("#add").show(true)
         }
     })
-
-
 </script>
+<script>
+    $(function(){
+        var urlProv = "{{url('json/propinsi.json')}}";
+        axios.get(urlProv).then(function(response){
+            for(i=0;i<response.data.length;i++){
+                $("#provinsi").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+            }
+        });
+        $("#provinsi").on('change',function(){
+            var idProv = $("#provinsi option:selected").val();
+            var urlKab = "{{url('json/kabupaten')}}/"+idProv+".json";
+            $("#kabupaten").empty();
+            $("#kecamatan").empty();
+            $("#desa").empty();
+            axios.get(urlKab).then(function(response){
+                for(i=0;i<response.data.length;i++){
+                    $("#kabupaten").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+                }
+            });
+            $("#kabupaten").on('change',function(){
+                var idKab = $("#kabupaten option:selected").val();
+                var urlKec = "{{url('json/kecamatan')}}/"+idKab+".json";
+                $("#kecamatan").empty();
+                $("#desa").empty();
+                axios.get(urlKec).then(function(response){
+                    for(i=0;i<response.data.length;i++){
+                        $("#kecamatan").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+                    }
+                });
+                $("#kecamatan").on('change',function(){
+                    var idKec = $("#kecamatan option:selected").val();
+                    var urlDesa = "{{url('json/kelurahan')}}/"+idKec+".json";
+                    $("#desa").empty();
+                    axios.get(urlDesa).then(function(response){
+                        for(i=0;i<response.data.length;i++){
+                            $("#desa").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+                        }
+                    });
+                });
+            });
+        });
+    })
+</script>
+@endsection
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{url('adminbite/assets/libs/select2/dist/css/select2.min.css')}}">
 @endsection

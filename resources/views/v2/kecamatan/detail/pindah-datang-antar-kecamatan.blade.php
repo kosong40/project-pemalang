@@ -6,17 +6,6 @@
         }else{
             $new = explode("/",$no);
         }
-        $alasan = Kustom::exp($data->alasan);
-        $jenis_pindah = null;
-        if($data->jenis_pindah == 1){
-            $jenis_pindah = "Kep. Keluarga";
-        }elseif($data->jenis_pindah == 2){
-            $jenis_pindah = "Kep. Keluarga & Seluruh Anggota Keluarga";
-        }elseif($data->jenis_pindah == 3){
-            $jenis_pindah = "Kep. Keluarga & Sebagian Anggota Keluarga";
-        }else{
-            $jenis_pindah = "Anggota Keluarga";
-        }
         function stat_kk($data){
             if($data == 1){
                 return "Numpang KK";
@@ -93,7 +82,7 @@
                 <small class="text-muted">Nama Kepala Keluarga</small>
                 <h6>{{$data->kepala_keluarga}}</h6>
                 <small class="text-muted">Alamat</small>
-                <h6>{{$data->alamat_1}} RT: {{$data->rt_1}} RW: {{$data->rw_1}} Dusun {{$data->dusun_1}} Desa {{$data->nama_daerah}} Kecamatan Pemalang</h6>
+                <h6>{{$data->alamat_1}} RT: {{$data->rt_1}} RW: {{$data->rw_1}} Dusun {{$data->dusun_1}} Desa {{$data->desa_1}} Kecamatan {{$data->kecamatan_1}}</h6>
                 <small class="text-muted">Kode Pos</small>
                 <h6>{{$data->kodepos_1}}</h6>
                 <small class="text-muted">Telepon</small>
@@ -102,18 +91,12 @@
         </div>
         <div class="tab-pane fade show" id="tujuan" role="tabpanel" aria-labelledby="pills-timeline-tab">
             <div class="card-body">
-                <small class="text-muted">Alasan Pindah</small>
-                <h6>{{$alasan[1]}}</h6>
                 <small class="text-muted">Alamat</small>
-                <h6>{{$data->alamat_2}} RT: {{$data->rt_2}} RW: {{$data->rw_2}} Dusun {{$data->dusun_2}} Desa {{$data->desa_2}} Kecamatan {{$data->kecamatan_2}}</h6>
+                <h6>{{$data->alamat_2}} RT: {{$data->rt_2}} RW: {{$data->rw_2}} Dusun {{$data->dusun_2}} Desa {{$data->desa_2}} Kecamatan Pemalang</h6>
                 <small class="text-muted">Kode Pos</small>
                 <h6>{{$data->kodepos_2}}</h6>
                 <small class="text-muted">Telepon</small>
                 <h6>{{$data->telepon_2}}</h6>
-                <small class="text-muted">Jenis Kepindahan</small>
-                <h6>{{$jenis_pindah}}</h6>
-                <small class="text-muted">Status KK yang tidak pindah</small>
-                <h6>{{stat_kk($data->stat_kk_nonpindah)}}</h6>
                 <small class="text-muted">Status KK yang pindah</small>
                 <h6>{{stat_kk($data->stat_kk_pindah)}}</h6>
             </div>
@@ -121,11 +104,11 @@
         <div class="tab-pane fade show" id="berkas" role="tabpanel" aria-labelledby="pills-timeline-tab">
             <div class="card-body">
                 <h6>Scan Kartu Tanda Penduduk</h6>
-                <a href="{{url("$data->scan_ktp")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <a href="{{url("$data->buat_ktp_kk")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
                 <h6>Scan Kartu Keluarga</h6>
-                <a href="{{url("$data->scan_kk")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <a href="{{url("$data->form_131")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
                 <h6>Scan Pengantar dari RT/RW</h6>
-                <a href="{{url("$data->scan_pengantar_rt")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <a href="{{url("$data->form_130")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
 
             </div>
         </div>

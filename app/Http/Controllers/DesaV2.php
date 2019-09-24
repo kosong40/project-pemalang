@@ -552,11 +552,62 @@ class DesaV2 extends Controller
         ]);
         return redirect()->back()->with('sukses', "Pengisian formulir berhasil, mohon untuk menunggu informasi lebih lanjut");
     }
-    public function FormPPAKab(Request $request)      
-    {
-        dd($request->all());
-    }
     public function FormPDAK(Request $request)      
+    {
+        $pemohon = Pemohon::create([
+            'nama'  =>  $request['nama'],
+            'kode'  => Kustom::generateKode(6),
+            'nik'   =>  $request['nik'],
+            'telepon'   =>  $request['telepon'],
+            'pekerjaan' =>  $request['pekerjaan'],
+            'rt'    =>  $request['rt'],
+            'rw'    =>  $request['rw'],
+            'jalan' =>  $request['jalan'],
+            'daerah_id'    =>  $request['daerah_id'],
+            'pelayanan_id'  => $request['pelayanan_id'],
+            'sublayanan_id' => $request['sublayanan_id'],
+            'created_at'    =>  now(+7.00),
+            'updated_at'   => null
+        ]);
+        $id_pemohon = $pemohon->id;
+        $buat_ktp_kk = Kustom::uploadBerkas($request->file('buat_ktp_kk'),"pindah-datang-antar-kecamatan","buat_ktp_kk");
+        $form_131 = Kustom::uploadBerkas($request->file('form_131'),"pindah-datang-antar-kecamatan","form_131");
+        $form_130 = Kustom::uploadBerkas($request->file('form_130'),"pindah-datang-antar-kecamatan","form_130");
+        $nik_kel = Kustom::imp($request->input('nik_kel'));
+        $nama_kel = Kustom::imp($request->input('nama_kel'));
+        $masa_kel = Kustom::imp($request->input('masa_kel'));
+        $shdk = Kustom::imp($request->input('shdk'));
+        DB::table('pindah-datang-antar-kecamatan')->insert([
+            'id_pemohon'    => $id_pemohon,
+            'nomor_kk'=> $request->input('nomor_kk'),
+            'kepala_keluarga'=> $request->input('kepala_keluarga'),
+            'alamat_1'=> $request->input('alamat_1'),
+            'rt_1'=> $request->input('rt_1'),
+            'rw_1'=> $request->input('rw_1'),
+            'dusun_1'=> $request->input('dusun_1'),
+            'desa_1'=> $request->input('desa_1'),
+            'kecamatan_1'=> $request->input('kecamatan_1'),
+            'kodepos_1'=> $request->input('kodepos_1'),
+            'telepon_1'=> $request->input('telepon_1'),
+            'alamat_2'=> $request->input('alamat_2'),
+            'rt_2'=> $request->input('rt_2'),
+            'rw_2'=> $request->input('rw_2'),
+            'dusun_2'=> $request->input('dusun_2'),
+            'desa_2'=> $request->input('desa_2'),
+            'kodepos_2'=> $request->input('kodepos_2'),
+            'telepon_2'=> $request->input('telepon_2'),
+            'stat_kk_pindah'=> $request->input('stat_kk_pindah'),
+            'nik_kel'=>$nik_kel,
+            'nama_kel'=>$nama_kel,
+            'masa_kel'=>$masa_kel,
+            'shdk'=>$shdk,
+            'buat_ktp_kk'=>$buat_ktp_kk,
+            'form_131'=>$form_131,
+            'form_130'=>$form_130,
+        ]);
+        return redirect()->back()->with('sukses', "Pengisian formulir berhasil, mohon untuk menunggu informasi lebih lanjut");
+    }
+    public function FormPPAKab(Request $request)      
     {
         dd($request->all());
     }
