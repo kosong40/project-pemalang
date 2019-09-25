@@ -368,6 +368,83 @@
         </div>
     </div>
     @include('v2/desa/formulir/keluarga')
+    <input type="hidden" name="provinsi_2[]" id="input_prov">
+    <input type="hidden" name="kabupaten_2[]" id="input_kab">
+    <input type="hidden" name="kecamatan_2[]" id="input_kec">
+    <input type="hidden" name="desa_2[]" id="input_desa">
+    <div class="card-body">
+        <h4 class="card-title">Berkas Lampiran</h4>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan Pengantar RT/RW</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('scan_pengantar_rt_rw')) is-invalid @endif" name="scan_pengantar_rt_rw">
+                @if($errors->get('scan_pengantar_rt_rw'))
+                    @foreach ($errors->get('scan_pengantar_rt_rw') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan KK</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('scan_kk')) is-invalid @endif" name="scan_kk">
+                @if($errors->get('scan_kk'))
+                    @foreach ($errors->get('scan_kk') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan Surat Nikah (Apabila ada perubahan)</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('scan_surat_nikah')) is-invalid @endif" name="scan_surat_nikah">
+                @if($errors->get('scan_surat_nikah'))
+                    @foreach ($errors->get('scan_surat_nikah') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan SKCK (Apabila dipersyaratkan oleh daerah tujuan)</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('scan_skck')) is-invalid @endif" name="scan_skck">
+                @if($errors->get('scan_skck'))
+                    @foreach ($errors->get('scan_skck') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan Surat Pernyataan Suami/Istri</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('surat_pernyataan')) is-invalid @endif" name="surat_pernyataan">
+                @if($errors->get('surat_pernyataan'))
+                    @foreach ($errors->get('surat_pernyataan') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+    </div>
 </div>
 @section('js')
 <script src="{{url('js/axios.js')}}"></script>
@@ -424,6 +501,7 @@
         $("#provinsi").on('change',function(){
             var idProv = $("#provinsi option:selected").val();
             var urlKab = "{{url('json/kabupaten')}}/"+idProv+".json";
+            $("#input_prov").val($("#provinsi option:selected").text())
             $("#kabupaten").empty();
             $("#kecamatan").empty();
             $("#desa").empty();
@@ -435,6 +513,7 @@
             $("#kabupaten").on('change',function(){
                 var idKab = $("#kabupaten option:selected").val();
                 var urlKec = "{{url('json/kecamatan')}}/"+idKab+".json";
+                $("#input_kab").val($("#kabupaten option:selected").text())
                 $("#kecamatan").empty();
                 $("#desa").empty();
                 axios.get(urlKec).then(function(response){
@@ -445,11 +524,15 @@
                 $("#kecamatan").on('change',function(){
                     var idKec = $("#kecamatan option:selected").val();
                     var urlDesa = "{{url('json/kelurahan')}}/"+idKec+".json";
+                    $("#input_kec").val($("#kecamatan option:selected").text())
                     $("#desa").empty();
                     axios.get(urlDesa).then(function(response){
                         for(i=0;i<response.data.length;i++){
                             $("#desa").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
                         }
+                    });
+                    $("#desa").on('change',function(){
+                        $("#input_desa").val($("#desa option:selected").text())
                     });
                 });
             });

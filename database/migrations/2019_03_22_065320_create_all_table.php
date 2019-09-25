@@ -297,20 +297,7 @@ class CreateAllTable extends Migration
             $table->string('no_sk')->unique()->nullable();
             $table->string('pesan')->nullable();
         });
-        Schema::create("pindah-pergi-antar-kabupaten",function(Blueprint $table){
-            $table->increments('id');
-            $table->integer('id_pemohon')->unsigned();
-            $table->foreign('id_pemohon')->references('id')->on('pemohons');
-            $table->string('no_sk')->unique()->nullable();
-            $table->string('pesan')->nullable();
-        });
-        Schema::create("pindah-datang-antar-kabupaten",function(Blueprint $table){
-            $table->increments('id');
-            $table->integer('id_pemohon')->unsigned();
-            $table->foreign('id_pemohon')->references('id')->on('pemohons');
-            $table->string('no_sk')->unique()->nullable();
-            $table->string('pesan')->nullable();
-        });
+
 
     }
 
