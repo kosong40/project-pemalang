@@ -609,11 +609,139 @@ class DesaV2 extends Controller
     }
     public function FormPPAKab(Request $request)      
     {
-        dd($request->all());
+        // dd($request->all());
+        $pemohon = Pemohon::create([
+            'nama'  =>  $request['nama'],
+            'kode'  => Kustom::generateKode(6),
+            'nik'   =>  $request['nik'],
+            'telepon'   =>  $request['telepon'],
+            'pekerjaan' =>  $request['pekerjaan'],
+            'rt'    =>  $request['rt'],
+            'rw'    =>  $request['rw'],
+            'jalan' =>  $request['jalan'],
+            'daerah_id'    =>  $request['daerah_id'],
+            'pelayanan_id'  => $request['pelayanan_id'],
+            'sublayanan_id' => $request['sublayanan_id'],
+            'created_at'    =>  now(+7.00),
+            'updated_at'   => null
+        ]);
+        $id_pemohon = $pemohon->id;
+        $scan_pengantar_rt_rw = Kustom::uploadBerkas($request->file('scan_pengantar_rt_rw'),"pindah-datang-antar-kecamatan","scan_pengantar_rt_rw");
+        $scan_kk = Kustom::uploadBerkas($request->file('scan_kk'),"pindah-datang-antar-kecamatan","scan_kk");
+        $scan_surat_nikah = Kustom::uploadBerkas($request->file('scan_surat_nikah'),"pindah-datang-antar-kecamatan","scan_surat_nikah");
+        $scan_skck = Kustom::uploadBerkas($request->file('scan_skck'),"pindah-datang-antar-kecamatan","scan_skck");
+        $surat_pernyataan = Kustom::uploadBerkas($request->file('surat_pernyataan'),"pindah-datang-antar-kecamatan","surat_pernyataan");
+        $nik_kel = Kustom::imp($request->input('nik_kel'));
+        $nama_kel = Kustom::imp($request->input('nama_kel'));
+        $masa_kel = Kustom::imp($request->input('masa_kel'));
+        $shdk = Kustom::imp($request->input('shdk'));
+        $alasan = Kustom::imp($request->input('alasan'));
+        $provinsi_2 = Kustom::imp($request->input('provinsi_2'));
+        $kabupaten_2 = Kustom::imp($request->input('kabupaten_2'));
+        $kecamatan_2 = Kustom::imp($request->input('kecamatan_2'));
+        $desa_2 = Kustom::imp($request->input('desa_2'));
+        DB::table('pindah-pergi-antar-kabupaten')->insert([
+            'id_pemohon'    => $id_pemohon,
+            'nomor_kk'=> $request->input('nomor_kk'),
+            'kepala_keluarga'=> $request->input('kepala_keluarga'),
+            'alamat_1'=> $request->input('alamat_1'),
+            'rt_1'=> $request->input('rt_1'),
+            'rw_1'=> $request->input('rw_1'),
+            'dusun_1'=> $request->input('dusun_1'),
+            'kodepos_1'=> $request->input('kodepos_1'),
+            'telepon_1'=> $request->input('telepon_1'),
+            'alasan' => $alasan,
+            'provinsi_2' => $provinsi_2,
+            'kabupaten_2' => $kabupaten_2,
+            'kecamatan_2' => $kecamatan_2,
+            'desa_2' => $desa_2,
+            'dusun_2'=> $request->input('dusun_2'),
+            'alamat_2'=> $request->input('alamat_2'),
+            'rt_2'=> $request->input('rt_2'),
+            'rw_2'=> $request->input('rw_2'),
+            'kodepos_2'=> $request->input('kodepos_2'),
+            'telepon_2'=> $request->input('telepon_2'),
+            'stat_kk_pindah'=> $request->input('stat_kk_pindah'),
+            'nik_kel'=>$nik_kel,
+            'nama_kel'=>$nama_kel,
+            'masa_kel'=>$masa_kel,
+            'shdk'=>$shdk,
+            'jenis_pindah'=> $request->input('jenis_pindah'),
+            'stat_kk_nonpindah'=> $request->input('stat_kk_nonpindah'),
+            'stat_kk_pindah'=> $request->input('stat_kk_pindah'),
+            'scan_pengantar_rt_rw'=>$scan_pengantar_rt_rw,
+            'scan_kk'=>$scan_kk,
+            'scan_surat_nikah'=>$scan_surat_nikah,
+            'scan_skck'=>$scan_skck,
+            'surat_pernyataan'=>$surat_pernyataan,
+        ]);
+        return redirect()->back()->with('sukses', "Pengisian formulir berhasil, mohon untuk menunggu informasi lebih lanjut");
     }
     public function FormPDAKab(Request $request)      
     {
-        dd($request->all());
+        // dd($request->all());
+        $pemohon = Pemohon::create([
+            'nama'  =>  $request['nama'],
+            'kode'  => Kustom::generateKode(6),
+            'nik'   =>  $request['nik'],
+            'telepon'   =>  $request['telepon'],
+            'pekerjaan' =>  $request['pekerjaan'],
+            'rt'    =>  $request['rt'],
+            'rw'    =>  $request['rw'],
+            'jalan' =>  $request['jalan'],
+            'daerah_id'    =>  $request['daerah_id'],
+            'pelayanan_id'  => $request['pelayanan_id'],
+            'sublayanan_id' => $request['sublayanan_id'],
+            'created_at'    =>  now(+7.00),
+            'updated_at'   => null
+        ]);
+        $id_pemohon = $pemohon->id;
+        $buat_ktp_kk = Kustom::uploadBerkas($request->file('buat_ktp_kk'),"pindah-datang-antar-kecamatan","buat_ktp_kk");
+        $form_138 = Kustom::uploadBerkas($request->file('form_138'),"pindah-datang-antar-kecamatan","form_138");
+        $form_139 = Kustom::uploadBerkas($request->file('form_139'),"pindah-datang-antar-kecamatan","form_139");
+        $scan_surat_nikah = Kustom::uploadBerkas($request->file('scan_surat_nikah'),"pindah-datang-antar-kecamatan","scan_surat_nikah");
+        $scan_skck = Kustom::uploadBerkas($request->file('scan_skck'),"pindah-datang-antar-kecamatan","scan_skck");
+        $nik_kel = Kustom::imp($request->input('nik_kel'));
+        $nama_kel = Kustom::imp($request->input('nama_kel'));
+        $masa_kel = Kustom::imp($request->input('masa_kel'));
+        $shdk = Kustom::imp($request->input('shdk'));
+        $provinsi_1 = Kustom::imp($request->input('provinsi_1'));
+        $kabupaten_1 = Kustom::imp($request->input('kabupaten_1'));
+        $kecamatan_1 = Kustom::imp($request->input('kecamatan_1'));
+        $desa_1 = Kustom::imp($request->input('desa_1'));
+        DB::table('pindah-datang-antar-kabupaten')->insert([
+            'id_pemohon'    => $id_pemohon,
+            'nomor_kk'=> $request->input('nomor_kk'),
+            'kepala_keluarga'=> $request->input('kepala_keluarga'),
+            'alamat_1'=> $request->input('alamat_1'),
+            'rt_1'=> $request->input('rt_1'),
+            'rw_1'=> $request->input('rw_1'),
+            'dusun_1'=> $request->input('dusun_1'),
+            'desa_1'=> $desa_1,
+            'provinsi_1'=> $provinsi_1,
+            'kabupaten_1'=> $kabupaten_1,
+            'kecamatan_1'=> $kecamatan_1,
+            'kodepos_1'=> $request->input('kodepos_1'),
+            'telepon_1'=> $request->input('telepon_1'),
+            'alamat_2'=> $request->input('alamat_2'),
+            'rt_2'=> $request->input('rt_2'),
+            'rw_2'=> $request->input('rw_2'),
+            'dusun_2'=> $request->input('dusun_2'),
+            'desa_2'=> $request->input('desa_2'),
+            'kodepos_2'=> $request->input('kodepos_2'),
+            'telepon_2'=> $request->input('telepon_2'),
+            'stat_kk_pindah'=> $request->input('stat_kk_pindah'),
+            'nik_kel'=>$nik_kel,
+            'nama_kel'=>$nama_kel,
+            'masa_kel'=>$masa_kel,
+            'shdk'=>$shdk,
+            'buat_ktp_kk'=>$buat_ktp_kk,
+            'form_138'=>$form_138,
+            'form_139'=>$form_139,
+            'scan_surat_nikah'=>$scan_surat_nikah,
+            'scan_skck'=>$scan_skck,
+        ]);
+        return redirect()->back()->with('sukses', "Pengisian formulir berhasil, mohon untuk menunggu informasi lebih lanjut");
     }
     
     

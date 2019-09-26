@@ -1,5 +1,6 @@
 <div class="card-body">
     <h4 class="card-title">Detail Daerah Asal</h4>
+
     <input type="hidden" name="sublayanan_id" value="{{$sublayanan->id}}">
     <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nomor Kartu Keluarga</label>
@@ -24,6 +25,85 @@
                 placeholder="Nama Kepala Keluarga">
             @if($errors->get('kepala_keluarga'))
             @foreach ($errors->get('kepala_keluarga') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Provinsi</label>
+        <div class="col-sm-9">
+            <select id="provinsi" name="provinsi_1[]" class="select2 form-control @if($errors->get('provinsi_1')) is-invalid @endif"
+                required style="width: 100%; height:36px;">
+                <option value="">Pilih Provinsi</option>
+            </select>
+            @if($errors->get('provinsi_1'))
+            @foreach ($errors->get('provinsi_1') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Kabupaten/Kota</label>
+        <div class="col-sm-9">
+            <select id="kabupaten" name="kabupaten_1[]" class="select2 form-control @if($errors->get('kabupaten_1')) is-invalid @endif"
+                required style="width: 100%; height:36px;">
+                <option value="">Pilih Kabupaten/Kota</option>
+            </select>
+            @if($errors->get('kabupaten_1'))
+            @foreach ($errors->get('kabupaten_1') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Kecamatan</label>
+        <div class="col-sm-9">
+            <select id="kecamatan" name="kecamatan_1[]" class="select2 form-control @if($errors->get('kecamatan_1')) is-invalid @endif"
+                required  style="width: 100%; height:36px;">
+                <option value="">Pilih Kecamatan</option>
+            </select>
+            @if($errors->get('kecamatan_1'))
+            @foreach ($errors->get('kecamatan_1') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Desa/Kelurahan</label>
+        <div class="col-sm-9" >
+            <select id="desa" name="desa_1[]" class="select2 form-control @if($errors->get('desa_1')) is-invalid @endif"
+                required  style="width: 100%; height:36px;">
+                <option value="">Pilih Desa/Kelurahan</option>
+            </select>
+            @if($errors->get('desa_1'))
+            @foreach ($errors->get('desa_1') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Dusun/ Dukuh</label>
+        <div class="col-sm-9">
+            <input type="text" value="{{old('dusun_1')}}"
+                class="form-control @if($errors->get('dusun_1')) is-invalid @endif" name="dusun_1"
+                placeholder="Dusun/ Dukuh">
+            @if($errors->get('dusun_1'))
+            @foreach ($errors->get('dusun_1') as $pesan)
             <div class="invalid-feedback">
                 {{$pesan}}
             </div>
@@ -75,28 +155,6 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Dusun/ Dukuh</label>
-        <div class="col-sm-9">
-            <input type="text" value="{{old('dusun_1')}}"
-                class="form-control @if($errors->get('dusun_1')) is-invalid @endif" name="dusun_1"
-                placeholder="Dusun/ Dukuh">
-            @if($errors->get('dusun_1'))
-            @foreach ($errors->get('dusun_1') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
-        <div class="col-sm-9">
-            <input readonly type="text" class="form-control" nama="desa_1" value="{{$daerah->nama_daerah}}"
-                placeholder="{{$daerah->jenis_daerah}}">
-        </div>
-    </div>
-    <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Kode Pos</label>
         <div class="col-sm-9">
             <input type="text" value="{{old('kodepos_1')}}"
@@ -130,32 +188,6 @@
 <hr>
 <div class="card-body">
     <h4 class="card-title">Data Kepindahan</h4>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alasan Pindah</label>
-        <div class="col-sm-9">
-            <select id="alasan" name="alasan[]" class="form-control @if($errors->get('alasan')) is-invalid @endif"
-                required>
-                <option selected>Pilih</option>
-                <option value="1">Pekerjaan</option>
-                <option value="2">Pendidikan</option>
-                <option value="3">Keamanan</option>
-                <option value="4">Kesehatan</option>
-                <option value="5">Perumahan</option>
-                <option value="6">Keluarga</option>
-                <option value="7">Lainnya</option>
-            </select>
-            <input type="text" value="{{old('alasan')}}"
-                class="mt-3 form-control @if($errors->get('alasan')) is-invalid @endif" name="alasan[]"
-                placeholder="Alasan" id="alasanInput">
-            @if($errors->get('alasan'))
-            @foreach ($errors->get('alasan') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
     <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alamat</label>
         <div class="col-sm-9">
@@ -217,8 +249,14 @@
     <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">{{$daerah->jenis_daerah}}</label>
         <div class="col-sm-9">
-            <input type="text" value="{{old('desa_2')}}"
-                class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2" placeholder="Desa">
+            {{-- <input type="text" value="{{old('desa_2')}}"
+                class="form-control @if($errors->get('desa_2')) is-invalid @endif" name="desa_2" placeholder="Desa"> --}}
+            <select name="desa_2" class="form-control">
+                <option>Pilih</option>
+                @foreach ($daerahs as $item)
+                    <option value="{{$item->nama_daerah}}">{{$item->nama_daerah}}</option>
+                @endforeach
+            </select>
             @if($errors->get('desa_2'))
             @foreach ($errors->get('desa_2') as $pesan)
             <div class="invalid-feedback">
@@ -259,46 +297,6 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Jenis Kepindahan</label>
-        <div class="col-sm-9">
-            <select name="jenis_pindah" class="form-control @if($errors->get('jenis_pindah')) is-invalid @endif"
-                required>
-                <option selected>Pilih</option>
-                <option value="1">Kep. Keluarga</option>
-                <option value="2">Kep. Keluarga dan Seluruh Anggota Keluarga</option>
-                <option value="3">Kep. Keluarga dan Sebagian Anggota Keluarga</option>
-                <option value="4">Anggota Keluarga</option>
-            </select>
-            @if($errors->get('jenis_pindah'))
-            @foreach ($errors->get('jenis_pindah') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Status KK (yang Tidak
-            Pindah)</label>
-        <div class="col-sm-9">
-            <select name="stat_kk_nonpindah"
-                class="form-control @if($errors->get('stat_kk_nonpindah')) is-invalid @endif" required>
-                <option selected>Pilih</option>
-                <option value="1">Numpang KK</option>
-                <option value="2">Membuat KK Baru</option>
-                <option value="3">Nomor KK Tetap</option>
-            </select>
-            @if($errors->get('stat_kk_nonpindah'))
-            @foreach ($errors->get('stat_kk_nonpindah') as $pesan)
-            <div class="invalid-feedback">
-                {{$pesan}}
-            </div>
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Status KK (yang Pindah)</label>
         <div class="col-sm-9">
             <select name="stat_kk_pindah" class="form-control @if($errors->get('stat_kk_pindah')) is-invalid @endif"
@@ -318,8 +316,89 @@
         </div>
     </div>
     @include('v2/desa/formulir/keluarga')
+    <div class="card-body">
+        <h4 class="card-title">Berkas Lampiran</h4>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Surat Keterangan Pindah WNI</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('buat_ktp_kk')) is-invalid @endif" name="buat_ktp_kk">
+                @if($errors->get('buat_ktp_kk'))
+                    @foreach ($errors->get('buat_ktp_kk') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Form 1-38</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('form_138')) is-invalid @endif" name="form_138">
+                @if($errors->get('form_138'))
+                    @foreach ($errors->get('form_138') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Form 1-39</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('form_139')) is-invalid @endif" name="form_139">
+                @if($errors->get('form_139'))
+                    @foreach ($errors->get('form_139') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan Surat Nikah (Apabila ada perubahan)</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('scan_surat_nikah')) is-invalid @endif" name="scan_surat_nikah">
+                @if($errors->get('scan_surat_nikah'))
+                    @foreach ($errors->get('scan_surat_nikah') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Scan SKCK (Apabila dipersyaratkan oleh daerah tujuan)</label>
+            <div class="custom-file col-sm-9">
+                <input type="file" class="form-control @if($errors->get('scan_skck')) is-invalid @endif" name="scan_skck">
+                @if($errors->get('scan_skck'))
+                    @foreach ($errors->get('scan_skck') as $pesan)
+                        <div class="invalid-feedback">
+                            {{$pesan}}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <br>
+    </div>
 </div>
+<input type="hidden" name="provinsi_1[]" id="input_prov">
+<input type="hidden" name="kabupaten_1[]" id="input_kab">
+<input type="hidden" name="kecamatan_1[]" id="input_kec">
+<input type="hidden" name="desa_1[]" id="input_desa">
 @section('js')
+<script src="{{url('js/axios.js')}}"></script>
+<script src="{{url('adminbite/assets/libs/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{url('adminbite/assets/libs/select2/dist/js/select2.min.js')}}"></script>
+<script src="{{url('adminbite/dist/js/pages/forms/select2/select2.init.js')}}"></script>
 <script>
     $(document).ready(function () {
        
@@ -359,6 +438,57 @@
         }
     })
 
-
 </script>
+    <script>
+    $(function(){
+        var urlProv = "{{url('json/propinsi.json')}}";
+        axios.get(urlProv).then(function(response){
+            for(i=0;i<response.data.length;i++){
+                $("#provinsi").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+            }
+        });
+        $("#provinsi").on('change',function(){
+            var idProv = $("#provinsi option:selected").val();
+            var urlKab = "{{url('json/kabupaten')}}/"+idProv+".json";
+            $("#input_prov").val($("#provinsi option:selected").text())
+            $("#kabupaten").empty();
+            $("#kecamatan").empty();
+            $("#desa").empty();
+            axios.get(urlKab).then(function(response){
+                for(i=0;i<response.data.length;i++){
+                    $("#kabupaten").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+                }
+            });
+            $("#kabupaten").on('change',function(){
+                var idKab = $("#kabupaten option:selected").val();
+                var urlKec = "{{url('json/kecamatan')}}/"+idKab+".json";
+                $("#input_kab").val($("#kabupaten option:selected").text())
+                $("#kecamatan").empty();
+                $("#desa").empty();
+                axios.get(urlKec).then(function(response){
+                    for(i=0;i<response.data.length;i++){
+                        $("#kecamatan").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+                    }
+                });
+                $("#kecamatan").on('change',function(){
+                    var idKec = $("#kecamatan option:selected").val();
+                    var urlDesa = "{{url('json/kelurahan')}}/"+idKec+".json";
+                    $("#input_kec").val($("#kecamatan option:selected").text())
+                    $("#desa").empty();
+                    axios.get(urlDesa).then(function(response){
+                        for(i=0;i<response.data.length;i++){
+                            $("#desa").append("<option value='"+response.data[i].id+"'>"+response.data[i].nama+"</option>")
+                        }
+                    });
+                    $("#desa").on('change',function(){
+                        $("#input_desa").val($("#desa option:selected").text())
+                    });
+                });
+            });
+        });
+    })
+</script>
+@endsection
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{url('adminbite/assets/libs/select2/dist/css/select2.min.css')}}">
 @endsection

@@ -55,6 +55,35 @@ class CreateKeduaTable extends Migration
             $table->increments('id');
             $table->integer('id_pemohon')->unsigned();
             $table->foreign('id_pemohon')->references('id')->on('pemohons');
+            $table->string('nomor_kk', 16);
+            $table->string('kepala_keluarga', 50);
+            $table->string('alamat_1', 100);
+            $table->string('rt_1', 3);
+            $table->string('rw_1', 3);
+            $table->string('dusun_1', 100);
+            $table->string('desa_1', 100);
+            $table->string('kecamatan_1', 100);
+            $table->string('kabupaten_1', 100);
+            $table->string('provinsi_1', 100);
+            $table->string('kodepos_1', 5)->nullable();
+            $table->string('telepon_1', 15)->nullable();
+            $table->string('alamat_2', 100);
+            $table->string('rt_2', 3);
+            $table->string('rw_2', 3);
+            $table->string('dusun_2', 100);
+            $table->string('desa_2', 100);
+            $table->string('kodepos_2', 5)->nullable();
+            $table->string('telepon_2', 15)->nullable();
+            $table->enum('stat_kk_pindah', [1,2,3]);
+            $table->string('nik_kel');
+            $table->string('nama_kel');
+            $table->string('masa_kel');
+            $table->string('shdk');
+            $table->string('buat_ktp_kk');
+            $table->string('form_138');
+            $table->string('form_139');
+            $table->string('scan_surat_nikah');
+            $table->string('scan_skck');
             $table->string('no_sk')->unique()->nullable();
             $table->string('pesan')->nullable();
         });
@@ -67,6 +96,7 @@ class CreateKeduaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kedua');
+        Schema::dropIfExists('pindah-datang-antar-kabupaten');
+        Schema::dropIfExists('pindah-pergi-antar-kabupaten');
     }
 }
