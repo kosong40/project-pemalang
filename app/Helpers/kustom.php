@@ -115,6 +115,18 @@ class kustom
         $url = $path.$nama;
         return $url;
     }
+    public static function kapital($teks){
+        return strtoupper($teks);
+    }
+    public static function lengthRTRW($teks)
+    {
+        $data = str_split($teks,1);
+        return count($data);
+    }
+    public static function stoa($teks)
+    {
+        return str_split($teks,1);
+    }
     public static function update_izin_mendirikan_bangunan($data,$id,$slug,$cekBerkas,$berkas)
     {
         DB::table("$slug")->where('id_pemohon',$id)

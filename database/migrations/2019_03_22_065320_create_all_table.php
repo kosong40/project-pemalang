@@ -22,6 +22,7 @@ class CreateAllTable extends Migration
             $table->string('nama_daerah');
             $table->string('jenis_daerah');
             $table->string('kepala_daerah');
+            $table->string('kode_daerah')->unique();
             $table->string('nip')->nullable();
         });
         Schema::create('admins', function (Blueprint $table) {

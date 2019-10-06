@@ -18,6 +18,10 @@ use PDF;
 
 class KecamatanV2 extends Controller
 {
+    public function cek()
+    {
+        // dd("cek");
+    }
     public function home()
     {
         $tgl = date('Y-m-d');

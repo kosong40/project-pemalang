@@ -924,7 +924,8 @@ class DesaV2 extends Controller
         'pelayanan' => $pelayanan,
         'sublayanan' => $sublayanan,
         'kode' => $kode,
-        'daerah'=>$daerah
+        'daerah'=>$daerah,
+        'daerhas' => Daerah::where('nama_daerah','<>','Pemalang')->get(),
     ];
     
     return view('v2/desa/ubah-data-pemohon-2', $data);
@@ -976,9 +977,5 @@ class DesaV2 extends Controller
             $pela = Pelayanan::find($request['pelayanan_id']);
             return redirect("desa/v2/data-pemohon/$pela->slug/$slug");
         }
-        
-
     }
-    
-    
 }

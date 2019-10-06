@@ -82,7 +82,9 @@
                 <small class="text-muted">Nama Kepala Keluarga</small>
                 <h6>{{$data->kepala_keluarga}}</h6>
                 <small class="text-muted">Alamat</small>
-                <h6>{{$data->alamat_1}} RT: {{$data->rt_1}} RW: {{$data->rw_1}} Dusun {{$data->dusun_1}} Desa {{$data->desa_1}} Kecamatan {{$data->kecamatan_1}}</h6>
+                <h6>{{$data->alamat_1}} RT: {{$data->rt_1}} RW: {{$data->rw_1}} Dusun {{$data->dusun_1}} DESA {{Kustom::exp($data->desa_1)[1]}} KECAMATAN {{Kustom::exp($data->kecamatan_1)[1]}} <br>
+                {{Kustom::exp($data->kabupaten_1)[1]}} PROVINSI {{Kustom::exp($data->provinsi_1)[1]}}
+                </h6>
                 <small class="text-muted">Kode Pos</small>
                 <h6>{{$data->kodepos_1}}</h6>
                 <small class="text-muted">Telepon</small>
@@ -105,10 +107,14 @@
             <div class="card-body">
                 <h6>Scan Kartu Tanda Penduduk</h6>
                 <a href="{{url("$data->buat_ktp_kk")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
-                <h6>Scan Form F-1.31</h6>
-                <a href="{{url("$data->form_131")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
-                <h6>Scan  Form F-1.30</h6>
-                <a href="{{url("$data->form_130")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <h6>Scan Form F-1.38</h6>
+                <a href="{{url("$data->form_138")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <h6>Scan Form F-1.39</h6>
+                <a href="{{url("$data->form_139")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <h6>Scan Surat Nikah</h6>
+                <a href="{{url("$data->scan_surat_nikah")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <h6>Scan SKCK</h6>
+                <a href="{{url("$data->scan_skck")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
 
             </div>
         </div>
