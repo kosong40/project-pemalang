@@ -15,7 +15,7 @@
         </tr>
         <tr id="contoh">
             <td>
-                <input type="text" name="nik_kel[]" id="" class="form-control">
+                <input type="text" pattern=".{16}" title="Harus di isi 16 karakter" name="nik_kel[]" id="" class="form-control">
             </td>
             <td>
                 <input type="text" name="nama_kel[]" id="" class="form-control">

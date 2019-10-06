@@ -464,6 +464,17 @@ class kustom
         }
         return $hari;
     }
+
+    public static function bulan($date){;
+        return date('m',strtotime($date));
+    }
+    public static function tanggal($date){;
+        return date('d',strtotime($date));
+    }
+    public static function tahun($date){;
+        return date('Y',strtotime($date));
+    }
+
     public static function getTanggal($date)
     {
         $m;

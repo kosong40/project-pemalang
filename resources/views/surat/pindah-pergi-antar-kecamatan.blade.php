@@ -289,38 +289,38 @@
         </tr>
 
         <tr>
-                <td>3.</td>
-                <td>Alamat Tujuan Pindah</td>
-                <td colspan=12 class="kotak">{{Kustom::kapital($item->alamat_2)}}</td>
-                <td colspan=2 style="text-align: center;">RT</td>
-                @if(Kustom::lengthRTRW($item->rt_2) == 1)
-                <td class="kotak satu">0</td>
-                <td class="kotak satu">0</td>
-                <td class="kotak satu">{{$item->rt_2}}</td>
-                @elseif(Kustom::lengthRTRW($item->rt_2) == 2)
-                <td class="kotak satu">0</td>
-                <td class="kotak satu">{{str_split($item->rt_2,1)[0]}}</td>
-                <td class="kotak satu">{{str_split($item->rt_2,1)[1]}}</td>
-                @else
-                <td class="kotak satu">{{str_split($item->rt_2,1)[0]}}</td>
-                <td class="kotak satu">{{str_split($item->rt_2,1)[1]}}</td>
-                <td class="kotak satu">{{str_split($item->rt_2,1)[2]}}</td>
-                @endif
-                    <td colspan=2 style="text-align: center;">RW</td>
-                    @if(Kustom::lengthRTRW($item->rw_2) == 1)
-                    <td class="kotak satu">0</td>
-                    <td class="kotak satu">0</td>
-                    <td class="kotak satu">{{$item->rw_2}}</td>
-                    @elseif(Kustom::lengthRTRW($item->rw_2) == 2)
-                    <td class="kotak satu">0</td>
-                    <td class="kotak satu">{{str_split($item->rw_2,1)[0]}}</td>
-                    <td class="kotak satu">{{str_split($item->rw_2,1)[1]}}</td>
-                    @else
-                    <td class="kotak satu">{{str_split($item->rw_2,1)[0]}}</td>
-                    <td class="kotak satu">{{str_split($item->rw_2,1)[1]}}</td>
-                    <td class="kotak satu">{{str_split($item->rw_2,1)[2]}}</td>
-                    @endif
-            </tr>
+            <td>3.</td>
+            <td>Alamat Tujuan Pindah</td>
+            <td colspan=12 class="kotak">{{Kustom::kapital($item->alamat_2)}}</td>
+            <td colspan=2 style="text-align: center;">RT</td>
+            @if(Kustom::lengthRTRW($item->rt_2) == 1)
+            <td class="kotak satu">0</td>
+            <td class="kotak satu">0</td>
+            <td class="kotak satu">{{$item->rt_2}}</td>
+            @elseif(Kustom::lengthRTRW($item->rt_2) == 2)
+            <td class="kotak satu">0</td>
+            <td class="kotak satu">{{str_split($item->rt_2,1)[0]}}</td>
+            <td class="kotak satu">{{str_split($item->rt_2,1)[1]}}</td>
+            @else
+            <td class="kotak satu">{{str_split($item->rt_2,1)[0]}}</td>
+            <td class="kotak satu">{{str_split($item->rt_2,1)[1]}}</td>
+            <td class="kotak satu">{{str_split($item->rt_2,1)[2]}}</td>
+            @endif
+            <td colspan=2 style="text-align: center;">RW</td>
+            @if(Kustom::lengthRTRW($item->rw_2) == 1)
+            <td class="kotak satu">0</td>
+            <td class="kotak satu">0</td>
+            <td class="kotak satu">{{$item->rw_2}}</td>
+            @elseif(Kustom::lengthRTRW($item->rw_2) == 2)
+            <td class="kotak satu">0</td>
+            <td class="kotak satu">{{str_split($item->rw_2,1)[0]}}</td>
+            <td class="kotak satu">{{str_split($item->rw_2,1)[1]}}</td>
+            @else
+            <td class="kotak satu">{{str_split($item->rw_2,1)[0]}}</td>
+            <td class="kotak satu">{{str_split($item->rw_2,1)[1]}}</td>
+            <td class="kotak satu">{{str_split($item->rw_2,1)[2]}}</td>
+            @endif
+        </tr>
 
         <tr>
             <td colspan=2>&nbsp;</td>
