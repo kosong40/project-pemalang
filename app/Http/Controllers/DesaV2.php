@@ -626,11 +626,11 @@ class DesaV2 extends Controller
             'updated_at'   => null
         ]);
         $id_pemohon = $pemohon->id;
-        $scan_pengantar_rt_rw = Kustom::uploadBerkas($request->file('scan_pengantar_rt_rw'),"pindah-datang-antar-kecamatan","scan_pengantar_rt_rw");
-        $scan_kk = Kustom::uploadBerkas($request->file('scan_kk'),"pindah-datang-antar-kecamatan","scan_kk");
-        $scan_surat_nikah = Kustom::uploadBerkas($request->file('scan_surat_nikah'),"pindah-datang-antar-kecamatan","scan_surat_nikah");
-        $scan_skck = Kustom::uploadBerkas($request->file('scan_skck'),"pindah-datang-antar-kecamatan","scan_skck");
-        $surat_pernyataan = Kustom::uploadBerkas($request->file('surat_pernyataan'),"pindah-datang-antar-kecamatan","surat_pernyataan");
+        $scan_pengantar_rt_rw = Kustom::uploadBerkas($request->file('scan_pengantar_rt_rw'),"pindah-datang-antar-kabupaten","scan_pengantar_rt_rw");
+        $scan_kk = Kustom::uploadBerkas($request->file('scan_kk'),"pindah-datang-antar-kabupaten","scan_kk");
+        $scan_surat_nikah = Kustom::uploadBerkas($request->file('scan_surat_nikah'),"pindah-datang-antar-kabupaten","scan_surat_nikah");
+        $scan_skck = Kustom::uploadBerkas($request->file('scan_skck'),"pindah-datang-antar-kabupaten","scan_skck");
+        $surat_pernyataan = Kustom::uploadBerkas($request->file('surat_pernyataan'),"pindah-datang-antar-kabupaten","surat_pernyataan");
         $nik_kel = Kustom::imp($request->input('nik_kel'));
         $nama_kel = Kustom::imp($request->input('nama_kel'));
         $masa_kel = Kustom::imp($request->input('masa_kel'));
