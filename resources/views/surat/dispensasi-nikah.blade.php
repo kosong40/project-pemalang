@@ -1,3 +1,4 @@
+@foreach($layanan as $item)
 <style>
     p{
         margin:0;
@@ -10,7 +11,7 @@
 <p style="font-size:16pt" align="center">PEMERINTAH KABUPATEN PEMALANG</p>
 <p style="font-size:18pt" align="center">KECAMATAN PEMALANG</p><br>
 <p style="font-size:12pt;margin-top:3pt" align="center">KEPUTUSAN CAMAT PEMALANG</p>
-<p style="font-size:12pt" align="center">NOMOR: </p>
+<p style="font-size:12pt" align="center">NOMOR: {{$item->no_sk}} </p>
 <p style="font-size:12pt" align="center">TENTANG</p>
 <p style="font-size:12pt" align="center">DISPENSASI NIKAH BAGI CALON PENGANTIN</p>
 <p style="font-size:12pt" align="center">CAMAT PEMALANG</p>
@@ -22,34 +23,34 @@
         <td valign="top">:</td>
         <td>
             <ul type="none">
-                <li><p>Surat Dari {{"desa/kelurahan"}} <i>{{"nama desa"}}</i> Kecamatan Pemalang Kabupaten Pemalang</p></li>
+                <li><p>Surat Dari {{"$item->jenis_daerah"}} <i>{{"$item->nama_daerah"}}</i> Kecamatan Pemalang Kabupaten Pemalang</p></li>
                 <li>
                     <table>
                         <tr>
                             <td><p>Tanggal</p></td>
                             <td><p>:</p></td>
-                            <td colspan=5><p>{{date('d M Y')}}</p></td>
+                            <td colspan=5><p>{{Kustom::getTanggal($item->created_at)}}</p></td>
                             
                         </tr>
                         <tr>
                             <td><p>Nomor</p></td>
                             <td><p>:</p></td>
-                            <td colspan=5><p>{{date('d M Y')}}</p></td>
+                            <td colspan=5><p>{{$item->no_sk}}</p></td>
                             
                         </tr>
                         <tr>
                             <td valign="top"><p>Perihal </p></td>
                             <td valign="top"><p>:</p></td>
-                            <td colspan=5><p>Dispensasi Nikah, atas nama Penduduk {{"jenis_daerah"}} <i>{{"nama daerah"}}</i><br> Kecamatan Pemalang</p></td>
+                            <td colspan=5><p>Dispensasi Nikah, atas nama Penduduk {{"$item->jenis_daerah"}} <i>{{"$item->nama_daerah"}}</i><br> Kecamatan Pemalang</p></td>
                             
                         </tr>
                         <tr>
                             <td style="width:2cm"><p>Nama</p></td>
                             <td><p>:</p></td>
-                            <td style="width:7cm"><p><i>Muchammad Dwi Cahyo Nugroho</i></p></td>
+                        <td style="width:7cm"><p><i>{{$item->calon_suami}}</i></p></td>
                             <td><p>Umur</p></td>
                             <td><p>:</p></td>
-                            <td><p><i>22 Tahun</i></p></td>
+                            <td><p><i>{{$item->umur_calon_suami}} Tahun</i></p></td>
                         </tr>
                     </table>
                 </li>
@@ -102,10 +103,10 @@
                         <tr>
                             <td style="width:2cm"><p>Nama</p></td>
                             <td><p>:</p></td>
-                            <td style="width:7cm"><p><i>Muchammad Dwi Cahyo Nugroho</i></p></td>
+                            <td style="width:7cm"><p><i>{{$item->calon_suami}}</i></p></td>
                             <td><p>Umur</p></td>
                             <td><p>:</p></td>
-                            <td><p><i>22 Tahun</i></p></td>
+                            <td><p><i>{{$item->umur_calon_suami}} Tahun</i></p></td>
                         </tr>
                         <tr>
                             <td colspan=6><p align="center"><b>Dengan</b></p></td>
@@ -113,15 +114,15 @@
                         <tr>
                             <td style="width:2cm"><p>Nama</p></td>
                             <td><p>:</p></td>
-                            <td style="width:7cm"><p><i>Muchammad Dwi Cahyo Nugroho</i></p></td>
+                            <td style="width:7cm"><p><i>{{$item->calon_istri}}</i></p></td>
                             <td><p>Umur</p></td>
                             <td><p>:</p></td>
-                            <td><p><i>22 Tahun</i></p></td>
+                            <td><p><i>{{$item->umur_calon_istri}} Tahun</i></p></td>
                         </tr>
                     </table>
                 </li>
                 <li>
-                    <p>Besok pada hari : {{"Hari"}}, Tanggal : {{date("d M Y")}}</p>
+                    <p>Besok pada hari : {{"Hari"}}, Tanggal : {{Kustom::getTanggal($item->tanggal_nikah)}}</p>
                 </li>
             </ul>
         </td>
@@ -143,7 +144,7 @@
         <td style="width:12cm"></td>
         <td>
             <p>Ditetapkan : Pemalang</p>
-            <p>Pada Tanggal : {{date('d M Y')}}</p>
+            <p>Pada Tanggal : {{Kustom::getTanggal(date('d-m-Y'))}}</p>
             <hr>
             <p align="center">
                 <b>CAMAT PEMALANG</b>
@@ -179,3 +180,4 @@
 </table>
     <p align="center">----------     Jl. Letjend. D.I Panjaitan No. 205 Telp (0284) 321004 Pemalang     ----------</p>
 </body>
+@endforeach

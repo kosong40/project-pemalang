@@ -223,13 +223,6 @@ class CreateAllTable extends Migration
             $table->string('pesan')->nullable();
         });
         
-        Schema::create("pindah-pergi-datang-antar-desa",function(Blueprint $table){
-            $table->increments('id');
-            $table->integer('id_pemohon')->unsigned();
-            $table->foreign('id_pemohon')->references('id')->on('pemohons');
-            $table->string('no_sk')->unique()->nullable();
-            $table->string('pesan')->nullable();
-        });
 
         Schema::create("pindah-pergi-antar-kecamatan",function(Blueprint $table){
             $table->increments('id');
@@ -270,8 +263,8 @@ class CreateAllTable extends Migration
             $table->increments('id');
             $table->integer('id_pemohon')->unsigned();
             $table->foreign('id_pemohon')->references('id')->on('pemohons');
-            $table->string('nomor_kk', 16);
-            $table->string('kepala_keluarga', 50);
+            $table->string('nomor_kk_1', 16);
+            $table->string('kepala_keluarga_1', 50);
             $table->string('alamat_1', 100);
             $table->string('rt_1', 3);
             $table->string('rw_1', 3);
@@ -288,6 +281,10 @@ class CreateAllTable extends Migration
             $table->string('kodepos_2', 5)->nullable();
             $table->string('telepon_2', 15)->nullable();
             $table->enum('stat_kk_pindah', [1,2,3]);
+            $table->string('nomor_kk_2', 16);
+            $table->string('kepala_keluarga_2', 50);
+            $table->string('nik_kepala_keluarga_2', 50);
+            $table->date('tanggal_pindah');
             $table->string('nik_kel');
             $table->string('nama_kel');
             $table->string('masa_kel');

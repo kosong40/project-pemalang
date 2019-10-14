@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-sm-3"><input type="text" class="form-control is-valid" readonly  name="no_sk[]" value="474.2"></div>
                         
-                        <div class="col-sm-3"><input type="text" class="form-control is-valid" name="no_sk[]"@if ($data->no_sk != null) value="{{$new[1-]}}" @endif required></div>
+                        <div class="col-sm-3"><input type="text" class="form-control is-valid" name="no_sk[]"@if ($data->no_sk != null) value="{{$new[1]}}" @endif required></div>
                         <div class="col-sm-3"><input type="text" class="form-control is-valid" readonly  name="no_sk[]" value="II"></div>
                         <div class="col-sm-3"><input type="text" class="form-control is-valid" readonly  name="no_sk[]" value={{date('Y')}}></div>
                     </div>

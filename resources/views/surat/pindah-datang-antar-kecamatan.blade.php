@@ -160,14 +160,14 @@
             <td>1.</td>
             <td>Nomor Kartu Keluarga</td>
             @for($i=0;$i<16;$i++) 
-                <td class="kotak satu">{{str_split($item->nomor_kk,1)[$i]}}</td>
+                <td class="kotak satu">{{str_split($item->nomor_kk_1,1)[$i]}}</td>
             @endfor
             <td colspan=6>&nbsp;</td>
         </tr>
         <tr>
             <td>2.</td>
             <td>Nama Kepala Keluarga</td>
-            <td colspan=22 class="kotak">{{Kustom::kapital($item->kepala_keluarga)}}</td>
+            <td colspan=22 class="kotak">{{Kustom::kapital($item->kepala_keluarga_1)}}</td>
         </tr>
         <tr>
             <td>3.</td>
@@ -276,7 +276,7 @@
             <td>2.</td>
             <td>Nomor Kartu Keluarga</td>
             @for($i=0;$i<16;$i++) 
-        <td class="kotak satu">{{str_split($item->nomor_kk,1)[$i]}}</td>
+        <td class="kotak satu">{{str_split($item->nomor_kk_2,1)[$i]}}</td>
             @endfor
             <td colspan=6>&nbsp;</td>
         </tr>
@@ -284,14 +284,14 @@
             <td>3.</td>
             <td>NIK Kepala Keluarga</td>
             @for($i=0;$i<16;$i++) 
-        <td class="kotak satu">{{str_split($item->nomor_kk,1)[$i]}}</td>
+        <td class="kotak satu">{{str_split($item->nik_kepala_keluarga_2,1)[$i]}}</td>
             @endfor
             <td colspan=6>&nbsp;</td>
         </tr>
         <tr>
             <td>4.</td>
             <td>Nama Kepala Keluarga</td>
-            <td colspan=22 class="kotak">{{Kustom::kapital($item->kepala_keluarga)}}</td>
+            <td colspan=22 class="kotak">{{Kustom::kapital($item->kepala_keluarga_2)}}</td>
         </tr>
 
 
@@ -300,9 +300,9 @@
             <td>Tanggal Kedatangan</td>
             {{-- tanggal --}}
             @php 
-                $bulan = Kustom::bulan($item->created_at);
-                $tanggal = Kustom::tanggal($item->created_at);
-                $tahun = Kustom::tahun($item->created_at);
+                $bulan = Kustom::bulan($item->tanggal_pindah);
+                $tanggal = Kustom::tanggal($item->tanggal_pindah);
+                $tahun = Kustom::tahun($item->tanggal_pindah);
 
             @endphp
             @for($i=0;$i<2;$i++)

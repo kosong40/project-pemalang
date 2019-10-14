@@ -126,6 +126,8 @@
                 <a href="{{url("$data->scan_kk")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
                 <h6>Scan Pengantar dari RT/RW</h6>
                 <a href="{{url("$data->scan_pengantar_rt")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
+                <h6>Scan Formulir F.1-29</h6>
+                <a href="{{url("$data->form_129")}}" class="btn btn-info btn-xs" target="_blank">Lihat</a>
 
             </div>
         </div>

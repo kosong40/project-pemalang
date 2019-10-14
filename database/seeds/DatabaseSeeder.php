@@ -80,7 +80,6 @@ class DatabaseSeeder extends Seeder
         $rm     =   "Rumah Makan";
         $gk     =   "Gelanggang Ketangkasan";
         $aw     =   "Atraksi Wisata";
-        $ppdd   =   "Pindah Pergi Datang Antar Desa";
         $ppakec =   "Pindah Pergi Antar Kecamatan";
         $pdakec =   "Pindah Datang Antar Kecamatan";
         $ppakab =   "Pindah Pergi Antar Kabupaten";
@@ -103,7 +102,6 @@ class DatabaseSeeder extends Seeder
             ['subpelayanan'=>"$rm",'jenis_pelayanan'=>"$ter",'slug'=>slug($rm),'id_pelayanan'=>4],
             ['subpelayanan'=>"$gk",'jenis_pelayanan'=>"$ter",'slug'=>slug($gk),'id_pelayanan'=>4],
             ['subpelayanan'=>"$aw",'jenis_pelayanan'=>"$ter",'slug'=>slug($aw),'id_pelayanan'=>4],
-            ['subpelayanan'=>"$ppdd",'jenis_pelayanan'=>$tidk,'slug'=>slug($ppdd),'id_pelayanan'=>5],
             ['subpelayanan'=>"$ppakec",'jenis_pelayanan'=>$tidk,'slug'=>slug($ppakec),'id_pelayanan'=>5],
             ['subpelayanan'=>"$pdakec",'jenis_pelayanan'=>$tidk,'slug'=>slug($pdakec),'id_pelayanan'=>5],
             ['subpelayanan'=>"$ppakab",'jenis_pelayanan'=>$tidk,'slug'=>slug($ppakab),'id_pelayanan'=>5],

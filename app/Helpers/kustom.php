@@ -435,6 +435,247 @@ class kustom
             ]);
         }
     }
+    public static function update_dispensasi_nikah($request,$id,$slug,$cekBerkas,$berkas)
+    {
+        DB::table("$slug")->where('id_pemohon',$id)->update([
+            'calon_suami'      => $request['calon_suami'],
+            'umur_calon_suami'    => $request['umur_calon_suami'],
+            'calon_istri'  =>  $request['calon_istri'],
+            'umur_calon_istri'    => $request['umur_calon_istri'],
+            'tanggal_nikah'    =>  $request['tanggal_nikah'],
+        ]);
+        if(array_key_exists("scan_ktp",$request)){
+            $scan_ktp = Kustom::uploadBerkas($berkas['scan_ktp'],"$slug","scan_ktp");
+            unlink($cekBerkas->scan_ktp);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_ktp' => $scan_ktp
+            ]);
+        }
+        if(array_key_exists("scan_kk",$request)){
+            $scan_kk = Kustom::uploadBerkas($berkas['scan_kk'],"$slug","scan_kk");
+            unlink($cekBerkas->scan_kk);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_kk' => $scan_kk
+            ]);
+        }
+        if(array_key_exists("akta_cerai",$request)){
+            $akta_cerai = Kustom::uploadBerkas($berkas['akta_cerai'],"$slug","akta_cerai");
+            unlink($cekBerkas->akta_cerai);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'akta_cerai' => $akta_cerai
+            ]);
+        }
+    }
+    public static function update_pindah_pergi_antar_kecamatan($request,$id,$slug,$cekBerkas,$berkas)
+    {
+            $alasan = Kustom::imp($request['alasan']);
+            $nik_kel = Kustom::imp($request['nik_kel']);
+            $nama_kel = Kustom::imp($request['nama_kel']);
+            $masa_kel = Kustom::imp($request['masa_kel']);
+            $shdk = Kustom::imp($request['shdk']);
+            DB::table("$slug")->where('id_pemohon',$id)->update([
+                'nomor_kk'=> $request['nomor_kk'],
+                'kepala_keluarga'=> $request['kepala_keluarga'],
+                'alamat_1'=> $request['alamat_1'],
+                'rt_1'=> $request['rt_1'],
+                'rw_1'=> $request['rw_1'],
+                'dusun_1'=> $request['dusun_1'],
+                'kodepos_1'=> $request['kodepos_1'],
+                'telepon_1'=> $request['telepon_1'],
+                'alamat_2'=> $request['alamat_2'],
+                'rt_2'=> $request['rt_2'],
+                'rw_2'=> $request['rw_2'],
+                'dusun_2'=> $request['dusun_2'],
+                'desa_2'=> $request['desa_2'],
+                'kecamatan_2'=> $request['kecamatan_2'],
+                'kodepos_2'=> $request['kodepos_2'],
+                'telepon_2'=> $request['telepon_2'],
+                'jenis_pindah'=> $request['jenis_pindah'],
+                'stat_kk_nonpindah'=> $request['stat_kk_nonpindah'],
+                'stat_kk_pindah'=> $request['stat_kk_pindah'],
+                'alasan'=>$alasan,
+                'nik_kel'=>$nik_kel,
+                'nama_kel'=>$nama_kel,
+                'masa_kel'=>$masa_kel,
+                'shdk'=>$shdk,
+            ]);
+        if(array_key_exists("scan_ktp",$request)){
+            $scan_ktp = Kustom::uploadBerkas($berkas['scan_ktp'],"$slug","scan_ktp");
+            unlink($cekBerkas->scan_ktp);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_ktp' => $scan_ktp
+            ]);
+        }
+        if(array_key_exists("scan_kk",$request)){
+            $scan_kk = Kustom::uploadBerkas($berkas['scan_kk'],"$slug","scan_kk");
+            unlink($cekBerkas->scan_kk);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_kk' => $scan_kk
+            ]);
+        }
+        if(array_key_exists("scan_pengantar_rt",$request)){
+            $scan_pengantar_rt = Kustom::uploadBerkas($berkas['scan_pengantar_rt'],"$slug","scan_pengantar_rt");
+            unlink($cekBerkas->scan_pengantar_rt);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_pengantar_rt' => $scan_pengantar_rt
+            ]);
+        }
+        if(array_key_exists("form_129",$request)){
+            $form_129 = Kustom::uploadBerkas($berkas['form_129'],"$slug","form_129");
+            unlink($cekBerkas->form_129);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'form_129' => $form_129
+            ]);
+        }
+
+    }
+    public static function update_pindah_datang_antar_kecamatan($request,$id,$slug,$cekBerkas,$berkas)
+    {
+        $nik_kel = Kustom::imp($request['nik_kel']);
+        $nama_kel = Kustom::imp($request['nama_kel']);
+        $masa_kel = Kustom::imp($request['masa_kel']);
+        $shdk = Kustom::imp($request['shdk']);
+        DB::table("$slug")->where('id_pemohon',$id)->update([
+            'nomor_kk_1'=> $request['nomor_kk_1'],
+            'kepala_keluarga_1'=> $request['kepala_keluarga_1'],
+            'alamat_1'=> $request['alamat_1'],
+            'rt_1'=> $request['rt_1'],
+            'rw_1'=> $request['rw_1'],
+            'dusun_1'=> $request['dusun_1'],
+            'desa_1'=> $request['desa_1'],
+            'kecamatan_1'=> $request['kecamatan_1'],
+            'kodepos_1'=> $request['kodepos_1'],
+            'telepon_1'=> $request['telepon_1'],
+            'nomor_kk_2'=> $request['nomor_kk_2'],
+            'kepala_keluarga_2'=> $request['kepala_keluarga_2'],
+            'nik_kepala_keluarga_2'=> $request['nik_kepala_keluarga_2'],
+            'tanggal_pindah'=> $request['tanggal_pindah'],
+            'alamat_2'=> $request['alamat_2'],
+            'rt_2'=> $request['rt_2'],
+            'rw_2'=> $request['rw_2'],
+            'dusun_2'=> $request['dusun_2'],
+            'desa_2'=> $request['desa_2'],
+            'kodepos_2'=> $request['kodepos_2'],
+            'telepon_2'=> $request['telepon_2'],
+            'stat_kk_pindah'=> $request['stat_kk_pindah'],
+            'nik_kel'=>$nik_kel,
+            'nama_kel'=>$nama_kel,
+            'masa_kel'=>$masa_kel,
+            'shdk'=>$shdk,
+        ]);
+        if(array_key_exists("buat_ktp_kk",$request)){
+            $buat_ktp_kk = Kustom::uploadBerkas($berkas['buat_ktp_kk'],"$slug","buat_ktp_kk");
+            unlink($cekBerkas->buat_ktp_kk);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'buat_ktp_kk' => $buat_ktp_kk
+            ]);
+        }
+        if(array_key_exists("form_131",$request)){
+            $form_131 = Kustom::uploadBerkas($berkas['form_131'],"$slug","form_131");
+            unlink($cekBerkas->form_131);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'form_131' => $form_131
+            ]);
+        }
+        if(array_key_exists("form_130",$request)){
+            $form_130 = Kustom::uploadBerkas($berkas['form_130'],"$slug","form_130");
+            unlink($cekBerkas->form_130);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'form_130' => $form_130
+            ]);
+        }
+    }
+    public static function update_pindah_pergi_antar_kabupaten($request,$id,$slug,$cekBerkas,$berkas){
+        $nik_kel = Kustom::imp($request['nik_kel']);
+        $nama_kel = Kustom::imp($request['nama_kel']);
+        $masa_kel = Kustom::imp($request['masa_kel']);
+        $shdk = Kustom::imp($request['shdk']);
+        $alasan = Kustom::imp($request['alasan']);
+        $provinsi_2 = Kustom::imp($request['provinsi_2']);
+        $kabupaten_2 = Kustom::imp($request['kabupaten_2']);
+        $kecamatan_2 = Kustom::imp($request['kecamatan_2']);
+        $desa_2 = Kustom::imp($request['desa_2']);
+        DB::table("$slug")->where('id_pemohon',$id)->update([
+            'nomor_kk'=> $request['nomor_kk'],
+            'kepala_keluarga'=> $request['kepala_keluarga'],
+            'alamat_1'=> $request['alamat_1'],
+            'rt_1'=> $request['rt_1'],
+            'rw_1'=> $request['rw_1'],
+            'dusun_1'=> $request['dusun_1'],
+            'kodepos_1'=> $request['kodepos_1'],
+            'telepon_1'=> $request['telepon_1'],
+            'alasan' => $alasan,
+            'provinsi_2' => $provinsi_2,
+            'kabupaten_2' => $kabupaten_2,
+            'kecamatan_2' => $kecamatan_2,
+            'desa_2' => $desa_2,
+            'dusun_2'=> $request['dusun_2'],
+            'alamat_2'=> $request['alamat_2'],
+            'rt_2'=> $request['rt_2'],
+            'rw_2'=> $request['rw_2'],
+            'kodepos_2'=> $request['kodepos_2'],
+            'telepon_2'=> $request['telepon_2'],
+            'stat_kk_pindah'=> $request['stat_kk_pindah'],
+            'nik_kel'=>$nik_kel,
+            'nama_kel'=>$nama_kel,
+            'masa_kel'=>$masa_kel,
+            'shdk'=>$shdk,
+            'jenis_pindah'=> $request['jenis_pindah'],
+            'stat_kk_nonpindah'=> $request['stat_kk_nonpindah'],
+            'stat_kk_pindah'=> $request['stat_kk_pindah'],
+        ]);
+        if(array_key_exists("scan_pengantar_rt_rw",$request)){
+            $scan_pengantar_rt_rw = Kustom::uploadBerkas($berkas['scan_pengantar_rt_rw'],"$slug","scan_pengantar_rt_rw");
+            unlink($cekBerkas->scan_pengantar_rt_rw);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_pengantar_rt_rw' => $scan_pengantar_rt_rw
+            ]);
+        }
+        if(array_key_exists("scan_kk",$request)){
+            $scan_kk = Kustom::uploadBerkas($berkas['scan_kk'],"$slug","scan_kk");
+            unlink($cekBerkas->scan_kk);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_kk' => $scan_kk
+            ]);
+        }
+        if(array_key_exists("scan_surat_nikah",$request)){
+            $scan_surat_nikah = Kustom::uploadBerkas($berkas['scan_surat_nikah'],"$slug","scan_surat_nikah");
+            unlink($cekBerkas->scan_surat_nikah);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_surat_nikah' => $scan_surat_nikah
+            ]);
+        }
+        if(array_key_exists("scan_skck",$request)){
+            $scan_skck = Kustom::uploadBerkas($berkas['scan_skck'],"$slug","scan_skck");
+            unlink($cekBerkas->scan_skck);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'scan_skck' => $scan_skck
+            ]);
+        }
+        if(array_key_exists("surat_pernyataan",$request)){
+            $surat_pernyataan = Kustom::uploadBerkas($berkas['surat_pernyataan'],"$slug","surat_pernyataan");
+            unlink($cekBerkas->surat_pernyataan);
+            DB::table("$slug")->where('id_pemohon',$id)
+            ->update([
+            'surat_pernyataan' => $surat_pernyataan
+            ]);
+        }
+    }
+
     public static function getData($i)
     {
         return count(DB::table("pemohons")->whereDate('created_at', DB::raw("CURDATE()+$i"))->get());
@@ -526,6 +767,5 @@ class kustom
         }elseif($no == 11){
             return "Lainnya";
         }
-
     }
 }

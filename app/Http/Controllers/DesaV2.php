@@ -1,19 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+// use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
+// use Illuminate\Support\Facades\Input;
 use App\Helpers\kustom;
 use App\Admin;
 use App\Daerah;
 use App\Pelayanan;
 use App\Sublayanan;
 use App\Pemohon;
-use App\imb;
-use Datatables;
 
 class DesaV2 extends Controller
 {
@@ -469,7 +465,6 @@ class DesaV2 extends Controller
         }
         DB::table('dispensasi-nikah')->insert([
             'id_pemohon'    => $id_pemohon,
-
             'calon_suami'      => $request['calon_suami'],
             'umur_calon_suami'    => $request['umur_calon_suami'],
             'calon_istri'  =>  $request['calon_istri'],
@@ -554,6 +549,7 @@ class DesaV2 extends Controller
     }
     public function FormPDAK(Request $request)      
     {
+        // dd($request->all());
         $pemohon = Pemohon::create([
             'nama'  =>  $request['nama'],
             'kode'  => Kustom::generateKode(6),
@@ -579,8 +575,8 @@ class DesaV2 extends Controller
         $shdk = Kustom::imp($request->input('shdk'));
         DB::table('pindah-datang-antar-kecamatan')->insert([
             'id_pemohon'    => $id_pemohon,
-            'nomor_kk'=> $request->input('nomor_kk'),
-            'kepala_keluarga'=> $request->input('kepala_keluarga'),
+            'nomor_kk_1'=> $request->input('nomor_kk_1'),
+            'kepala_keluarga_1'=> $request->input('kepala_keluarga_1'),
             'alamat_1'=> $request->input('alamat_1'),
             'rt_1'=> $request->input('rt_1'),
             'rw_1'=> $request->input('rw_1'),
@@ -589,6 +585,10 @@ class DesaV2 extends Controller
             'kecamatan_1'=> $request->input('kecamatan_1'),
             'kodepos_1'=> $request->input('kodepos_1'),
             'telepon_1'=> $request->input('telepon_1'),
+            'nomor_kk_2'=> $request->input('nomor_kk_2'),
+            'kepala_keluarga_2'=> $request->input('kepala_keluarga_2'),
+            'nik_kepala_keluarga_2'=> $request->input('nik_kepala_keluarga_2'),
+            'tanggal_pindah'=> $request->input('tanggal_pindah'),
             'alamat_2'=> $request->input('alamat_2'),
             'rt_2'=> $request->input('rt_2'),
             'rw_2'=> $request->input('rw_2'),
@@ -964,7 +964,19 @@ class DesaV2 extends Controller
             'scan_izin_lama'    => $request->file('scan_izin_lama'),
             'scan_pernyataan_desa'  =>$request->file('scan_pernyataan_desa'),
             'struktur_organisasi'=>$request->file('struktur_organisasi'),
-            'foto'  => $request->file('foto')
+            'foto'  => $request->file('foto'),
+            'akta_cerai' => $request->file('akta_cerai'),
+            'scan_pengantar_rt' => $request->file('scan_pengantar_rt'),
+            'form_129' => $request->file('form_129'),
+            'buat_ktp_kk' => $request->file('buat_ktp_kk'),
+            'form_131' => $request->file('form_131'),
+            'form_130' => $request->file('form_130'),
+            'scan_pengantar_rt_rw' => $request->file('scan_pengantar_rt_rw'),
+            'scan_surat_nikah' => $request->file('scan_surat_nikah'),
+            'scan_skck' => $request->file('scan_skck'),
+            'surat_pernyataan' => $request->file('surat_pernyataan'),
+
+
         ];
         $method = "update_".str_replace('-','_',"$slug");
         DB::table("$slug")->where('id_pemohon',$id_pemohon->id)->update([
