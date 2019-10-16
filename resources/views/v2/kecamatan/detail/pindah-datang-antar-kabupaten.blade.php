@@ -102,7 +102,7 @@
                     <small class="text-muted">Tanggal Kepindahan</small>
                     <h6>{{Kustom::getDay($data->tanggal_pindah)}}{{Kustom::getTanggal($data->tanggal_pindah)}}</h6>
                 <small class="text-muted">Alamat</small>
-                <h6>{{$data->alamat_2}} RT: {{$data->rt_2}} RW: {{$data->rw_2}} Dusun {{$data->dusun_2}} Desa {{$data->desa_2}} Kecamatan Pemalang</h6>
+                <h6>{{Kustom::kapital($item->alamat_2) ." RT: $item->rt_2 RW: $item->rw_2 DUSUN ". Kustom::kapital($item->dusun_2) ." DESA ". Kustom::exp($item->desa_2)[1]." KECAMATAN ".Kustom::exp($item->kecamatan_2)[1]." ".Kustom::exp($item->kabupaten_2)[1]." PROVINSI ".Kustom::exp($item->provinsi_2)[1]}}</h6>
                 <small class="text-muted">Kode Pos</small>
                 <h6>{{$data->kodepos_2}}</h6>
                 <small class="text-muted">Telepon</small>

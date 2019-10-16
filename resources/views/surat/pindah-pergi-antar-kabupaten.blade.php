@@ -63,11 +63,15 @@
     table.ttd td {
         text-align: center;
     }
+    table tr td p{
+        font-size: 13pt;
+    }
 </style>
 
 @foreach ($layanan as $item)
 {{-- {{dd($item )}} --}}
 <body onload="window.print()">
+{{-- <body> --}}
 <page orientation="portrait" format="210x330" style="font-size: 10pt">
     <table align="right" style="padding: 5px 20px; border: solid 1px black;">
         <tr>
@@ -481,6 +485,173 @@
         - Lembar 3 diarsipkan di Kecamatan <br>
     </p>
 
+</page>
+  
+<page orientation="portrait" format="210x330" style="font-size: 10pt;" >
+    <div class="page-2" style="padding: 1cm 2cm 2cm 2cm">
+        <br><br><br><br>
+        <table align="right" style="padding: 5px 20px; border: solid 1px black;">
+            <tr>
+                <td><strong>F.1-35</strong></td>
+            </tr>
+        </table>
+        <br><br><br><br>
+        <h2 align="center" style="margin:0;">SURAT PENGANTAR PINDAH</h2>
+        <h2 align="center" style="margin:0;"><u>ANTAR KABUPATEN/KOTA ATAU ANTAR PROVINSI</u></h2>
+        <h2 align="center" style="margin:0;font-weight:normal">Nomor: {{$item->no_sk}}</h2><br><br>
+        <p align="justify" style="font-size: 13pt">
+            Yang bertanda tangan dibawah ini, menerangkan Permohonan Pindah Penduduk WNI dengan data sebagai berikut:
+        </p>
+        <br><br>
+        <table>
+            <tr>
+                <td valign="top">
+                    <p>1.</p>
+                </td>
+                <td valign="top" style="width:40%">
+                    <p>NIK</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                    <p>{{$item->nik}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p>2.</p>
+                </td>
+                <td valign="top">
+                    <p>Nama Lengkap</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                <p>{{Kustom::kapital($item->nama)}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p>3.</p>
+                </td>
+                <td valign="top">
+                    <p>Nomor Kartu Keluarga</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                    <p>{{$item->nomor_kk}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p>4.</p>
+                </td>
+                <td valign="top">
+                    <p>Nama Kepala Keluarga</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                    <p>{{Kustom::kapital($item->kepala_keluarga)}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p>5.</p>
+                </td>
+                <td valign="top">
+                    <p>Alamat Sekarang</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                    <p><p>{{Kustom::kapital($item->alamat_1) ." RT: $item->rt_2 RW: $item->rw_2 DUSUN ". Kustom::kapital($item->dusun_1) ." DESA ". Kustom::kapital($item->nama_daerah)." KECAMATAN PEMALANG KABUPATEN PEMALANG PROVINSI JAWA TENGAH"}}</p></p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p>6.</p>
+                </td>
+                <td valign="top">
+                    <p>Alamat Tujuan</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                    <p>{{Kustom::kapital($item->alamat_2) ." RT: $item->rt_2 RW: $item->rw_2 DUSUN ". Kustom::kapital($item->dusun_2) ." DESA ". Kustom::exp($item->desa_2)[1]." KECAMATAN ".Kustom::exp($item->kecamatan_2)[1]." ".Kustom::exp($item->kabupaten_2)[1]." PROVINSI ".Kustom::exp($item->provinsi_2)[1]}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <p>7.</p>
+                </td>
+                <td valign="top">
+                    <p>Jumlah Keluarga Yang Pindah</p>
+                </td>
+                <td valign="top">
+                    <p>:</p>
+                </td>
+                <td>
+                    <p>{{$pjg}} Orang</p>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <p style="font-size:13pt" align="justify">
+            Adapun Permohonan Pindah Penduduk WNI yang bersangkutan sebagaimana terlampir.
+        </p>
+        <p style="font-size:13pt;text-indent: 60px;" align="justify">
+            Demikian Surat Pengantar Pindah ini dibuat agar digunakan sebagaimana mestinya.
+        </p>
+        <br><br><br>
+        <table class="ttd">
+            <col style="width:35%">
+            <col style="width:30%">
+            <col style="width:35%">
+    
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <p align="center">
+                        Pemalang, {{Kustom::getTanggal(date('d-m-Y'))}}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><p>Mengetahui</p></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>CAMAT PEMALANG</td>
+            </tr>
+            <tr style="font-size: 23mm; line-height: normal;">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>__________________________</td>
+            </tr>
+        </table>
+    </div>
 </page>
 </body>
 @endforeach
