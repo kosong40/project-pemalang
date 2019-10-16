@@ -75,6 +75,10 @@ class CreateKeduaTable extends Migration
             $table->string('kodepos_2', 5)->nullable();
             $table->string('telepon_2', 15)->nullable();
             $table->enum('stat_kk_pindah', [1,2,3]);
+            $table->string('nomor_kk_2', 16);
+            $table->string('kepala_keluarga_2', 50);
+            $table->string('nik_kepala_keluarga_2', 50);
+            $table->date('tanggal_pindah');
             $table->string('nik_kel');
             $table->string('nama_kel');
             $table->string('masa_kel');

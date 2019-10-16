@@ -189,6 +189,66 @@
 <div class="card-body">
     <h4 class="card-title">Data Kepindahan</h4>
     <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nomor Kartu Keluarga</label>
+        <div class="col-sm-9">
+            <input type="text" value="{{old('nomor_kk_2')}}"
+                class="form-control @if($errors->get('nomor_kk_2')) is-invalid @endif" name="nomor_kk_2"
+                placeholder="Nomor Kartu Keluarga">
+            @if($errors->get('nomor_kk_2'))
+            @foreach ($errors->get('nomor_kk_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">NIK Kepala Keluarga</label>
+        <div class="col-sm-9">
+            <input type="text" value="{{old('nik_kepala_keluarga_2')}}"
+                class="form-control @if($errors->get('nik_kepala_keluarga_2')) is-invalid @endif" name="nik_kepala_keluarga_2"
+                placeholder="NIK Kepala Keluarga">
+            @if($errors->get('nik_kepala_keluarga_2'))
+            @foreach ($errors->get('nik_kepala_keluarga_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Nama Kepala Keluarga</label>
+        <div class="col-sm-9">
+            <input type="text" value="{{old('kepala_keluarga_2')}}"
+                class="form-control @if($errors->get('kepala_keluarga_2')) is-invalid @endif" name="kepala_keluarga_2"
+                placeholder="Nama Kepala Keluarga">
+            @if($errors->get('kepala_keluarga_2'))
+            @foreach ($errors->get('kepala_keluarga_2') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Tanggal Pindah</label>
+        <div class="col-sm-9">
+            <input type="date" value="{{old('tanggal_pindah')}}"
+                class="form-control @if($errors->get('tanggal_pindah')) is-invalid @endif" name="tanggal_pindah"
+                placeholder="Tanggal Pindah">
+            @if($errors->get('tanggal_pindah'))
+            @foreach ($errors->get('tanggal_pindah') as $pesan)
+            <div class="invalid-feedback">
+                {{$pesan}}
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alamat</label>
         <div class="col-sm-9">
             <input type="text" value="{{old('alamat_2')}}"

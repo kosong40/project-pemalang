@@ -192,6 +192,7 @@
 <hr>
 <div class="card-body">
     <h4 class="card-title">Data Kepindahan</h4>
+    
     <div class="form-group row">
         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Alamat</label>
         <div class="col-sm-9">

@@ -67,7 +67,7 @@
 
 @foreach ($layanan as $item)
 {{-- {{dd($item )}} --}}
-<body>
+<body onload="window.print()">
 <page orientation="portrait" format="210x330" style="font-size: 10pt">
         <table style="float:right;position:relative">
                 <tr>
@@ -236,7 +236,7 @@
             <td colspan=4 class="tengah">Telepon</td>
             @for($i=0;$i<10;$i++)
             <td class="kotak satu">
-                {{Kustom::stoa($item->telepon_1)[$i]}}
+                {{Kustom::noTelp($item->telepon_1)[$i]}}
             </td>
             @endfor
         </tr>
@@ -353,7 +353,7 @@
             <td colspan=4 class="tengah">Telepon</td>
             @for($i=0;$i<10;$i++)
             <td class="kotak satu">
-                {{Kustom::stoa($item->telepon_2)[$i]}}
+                {{Kustom::noTelp($item->telepon_2)[$i]}}
             </td>
             @endfor
         </tr>

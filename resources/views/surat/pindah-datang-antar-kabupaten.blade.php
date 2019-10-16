@@ -67,7 +67,7 @@
 
 @foreach ($layanan as $item)
 {{-- {{dd($item )}} --}}
-<body>
+<body onload="window.print()">
 <page orientation="portrait" format="210x330" style="font-size: 10pt">
     <table align="right" style="padding: 5px 20px; border: solid 1px black;">
         <tr>
@@ -221,7 +221,7 @@
             <td colspan=4 class="tengah">Telepon</td>
             @for($i=0;$i<10;$i++)
             <td class="kotak satu">
-                {{Kustom::stoa($item->telepon_1)[$i]}}
+                {{Kustom::noTelp($item->telepon_1)[$i]}}
             </td>
             @endfor
         </tr>
@@ -261,7 +261,7 @@
             <td>2.</td>
             <td>Nomor Kartu Keluarga</td>
             @for($i=0;$i<16;$i++) 
-        <td class="kotak satu">{{str_split($item->nomor_kk,1)[$i]}}</td>
+        <td class="kotak satu">{{str_split($item->nomor_kk_2,1)[$i]}}</td>
             @endfor
             <td colspan=6>&nbsp;</td>
         </tr>
@@ -269,7 +269,7 @@
             <td>3.</td>
             <td>NIK Kepala Keluarga</td>
             @for($i=0;$i<16;$i++) 
-        <td class="kotak satu">{{str_split($item->nomor_kk,1)[$i]}}</td>
+            <td class="kotak satu">{{str_split($item->nik_kepala_keluarga_2,1)[$i]}}</td>
             @endfor
             <td colspan=6>&nbsp;</td>
         </tr>
@@ -285,9 +285,9 @@
             <td>Tanggal Kedatangan</td>
             {{-- tanggal --}}
             @php 
-                $bulan = Kustom::bulan($item->created_at);
-                $tanggal = Kustom::tanggal($item->created_at);
-                $tahun = Kustom::tahun($item->created_at);
+                $bulan = Kustom::bulan($item->tanggal_pindah);
+                $tanggal = Kustom::tanggal($item->tanggal_pindah);
+                $tahun = Kustom::tahun($item->tanggal_pindah);
 
             @endphp
             @for($i=0;$i<2;$i++)
@@ -372,7 +372,7 @@
             <td colspan=4 class="tengah">Telepon</td>
             @for($i=0;$i<10;$i++)
             <td class="kotak satu">
-                {{Kustom::stoa($item->telepon_2)[$i]}}
+                {{Kustom::noTelp($item->telepon_2)[$i]}}
             </td>
             @endfor
         </tr>
@@ -478,13 +478,13 @@
         </tr>
     </table>
     <p>
-            <strong>Keterangan:</strong><br>
-            *) Diisi Oleh Petugas <br>
-            - Formulir ini diisi di Kecamatan <br>
-            - Lembar 1 dibawa oleh pemohon dan diarsipkan di Dinas Kependudukan dan Pencatatan Sipil <br>
-            - Lembar 2 untuk pemohon <br>
-            - Lembar 3 diarsipkan di Kecamatan <br>
-        </p>
+        <strong>Keterangan:</strong><br>
+        *) Diisi Oleh Petugas <br>
+        - Formulir ini diisi di Kecamatan <br>
+        - Lembar 1 dibawa oleh pemohon dan diarsipkan di Dinas Kependudukan dan Pencatatan Sipil <br>
+        - Lembar 2 untuk pemohon <br>
+        - Lembar 3 diarsipkan di Kecamatan <br>
+    </p>
 
 </page>
 </body>

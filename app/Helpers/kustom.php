@@ -705,7 +705,41 @@ class kustom
         }
         return $hari;
     }
+    public static function noTelp($nohp)
+    {
+        // kadang ada penulisan no hp 0811 239 345
+        $nohp = str_replace(" ","",$nohp);
+        // kadang ada penulisan no hp (0274) 778787
+        $nohp = str_replace("(","",$nohp);
+        // kadang ada penulisan no hp (0274) 778787
+        $nohp = str_replace(")","",$nohp);
+        // kadang ada penulisan no hp 0811.239.345
+        $nohp = str_replace(".","",$nohp);
 
+        // cek apakah no hp mengandung karakter + dan 0-9
+        if(!preg_match('/[^+0-9]/',trim($nohp))){
+            // cek apakah no hp karakter 1-3 adalah +62
+            if(substr(trim($nohp), 0, 3)=='+62'){
+                $hp = substr_replace($nohp,'',0,3);
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif(substr(trim($nohp), 0, 2)=='08'){
+                $hp = substr(trim($nohp), 2);
+            }else{
+                $hp = $nohp;
+            }
+        }
+        $no_hp = str_split($hp,1);
+        $panjang = count(str_split($hp,1));
+        if($panjang != 10){
+            for($i=0;$i<10-$panjang;$i++){
+                array_push($no_hp,null);
+            }
+            return $no_hp;
+        }else{
+            return $no_hp;
+        }
+    }
     public static function bulan($date){;
         return date('m',strtotime($date));
     }

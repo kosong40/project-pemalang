@@ -93,6 +93,14 @@
         </div>
         <div class="tab-pane fade show" id="tujuan" role="tabpanel" aria-labelledby="pills-timeline-tab">
             <div class="card-body">
+                    <small class="text-muted">Nomor Kartu Keluarga</small>
+                    <h6>{{$data->nomor_kk_2}}</h6>
+                    <small class="text-muted">NIK Kepala Keluarga</small>
+                    <h6>{{$data->nik_kepala_keluarga_2}}</h6>
+                    <small class="text-muted">Nama Kepala Keluarga</small>
+                    <h6>{{$data->kepala_keluarga_2}}</h6>
+                    <small class="text-muted">Tanggal Kepindahan</small>
+                    <h6>{{Kustom::getDay($data->tanggal_pindah)}}{{Kustom::getTanggal($data->tanggal_pindah)}}</h6>
                 <small class="text-muted">Alamat</small>
                 <h6>{{$data->alamat_2}} RT: {{$data->rt_2}} RW: {{$data->rw_2}} Dusun {{$data->dusun_2}} Desa {{$data->desa_2}} Kecamatan Pemalang</h6>
                 <small class="text-muted">Kode Pos</small>
