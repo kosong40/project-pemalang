@@ -144,7 +144,7 @@
                 <option value="6">Keluarga</option>
                 <option value="7">Lainnya</option>
             </select>
-            <input type="text" value="{{old('alasan')}}"
+            <input type="text" value="{{old('alasan'[1])}}"
                 class="mt-3 form-control @if($errors->get('alasan')) is-invalid @endif" name="alasan[]"
                 placeholder="Alasan" id="alasanInput">
             @if($errors->get('alasan'))

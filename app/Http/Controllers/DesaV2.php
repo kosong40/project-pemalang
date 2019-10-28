@@ -479,16 +479,47 @@ class DesaV2 extends Controller
     }
 
 
-    public function FormPPDD(Request $request)
-    {
-        dd($request->all());
-    }
+    // public function FormPPDD(Request $request)
+    // {
+    //     dd($request->all());
+    // }
 
     public function FormPPAK(Request $request)      
     {
         // dd($request->all());
 
         // FORM F-1.30
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required|min:16|max:18',
+            'telepon' => 'required',
+            'pekerjaan' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'jalan' => 'required',
+            'nomor_kk' => 'required|size:16',
+            'kepala_keluarga'=> 'required|max:50|string',
+            'alamat_1' => 'required',
+            'rt_1' => 'max:3|required',
+            'rw_1'=>'max:3|required',
+            'dusun_1'=> 'required|max:50',
+            'alasan'=>'required',
+            'kodepos_1'=>'size:5',
+            'telepon_1'=> 'max:15',
+            'alamat_2'=>'required',
+            'rt_2' => 'max:3|required',
+            'rw_2'=>'max:3|required',
+            'dusun_2'=> 'required|max:50',
+            'desa_2'=> 'required|max:50',
+            'kecamatan_2'=> 'required|max:50',
+            'kodepos_2'=>'size:5',
+            'telepon_2'=> 'max:15',
+            'scan_ktp' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_kk' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_pengantar_rt' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'form_129' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            
+        ],Kustom::validasi());
         $pemohon = Pemohon::create([
             'nama'  =>  $request['nama'],
             'kode'  => Kustom::generateKode(6),
@@ -550,6 +581,40 @@ class DesaV2 extends Controller
     public function FormPDAK(Request $request)      
     {
         // dd($request->all());
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required|min:16|max:18',
+            'telepon' => 'required',
+            'pekerjaan' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'jalan' => 'required',
+            'nomor_kk_1' => 'required|size:16',
+            'kepala_keluarga_1'=> 'required|max:50|string',
+            'alamat_1' => 'required',
+            'rt_1' => 'max:3|required',
+            'rw_1'=>'max:3|required',
+            'dusun_1'=> 'required|max:50',
+            'desa_1'=> 'required|max:50',
+            'kecamatan_1'=> 'required|max:50',
+            'kodepos_1'=>'size:5',
+            'telepon_1'=> 'max:15',
+            'nomor_kk_2'=>'required|size:16',
+            'kepala_keluarga_2'=>'required',
+            'nik_kepala_keluarga_2'=>'required|size:16',
+            'tanggal_pindah'=>'required|date',
+            'alamat_2'=>'required',
+            'rt_2' => 'max:3|required',
+            'rw_2'=>'max:3|required',
+            'dusun_2'=> 'required|max:50',
+            'desa_2'=> 'required|max:50',
+            'kodepos_2'=>'size:5',
+            'telepon_2'=> 'max:15',
+            'buat_ktp_kk' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'form_131' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'form_130' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            
+        ],Kustom::validasi());
         $pemohon = Pemohon::create([
             'nama'  =>  $request['nama'],
             'kode'  => Kustom::generateKode(6),
@@ -610,6 +675,41 @@ class DesaV2 extends Controller
     public function FormPPAKab(Request $request)      
     {
         // dd($request->all());
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required|min:16|max:18',
+            'telepon' => 'required',
+            'pekerjaan' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'jalan' => 'required',
+            'nomor_kk' => 'required|size:16',
+            'kepala_keluarga'=> 'required|max:50|string',
+            'alamat_1' => 'required',
+            'rt_1' => 'max:3|required',
+            'rw_1'=>'max:3|required',
+            'dusun_1'=> 'required|max:50',
+            'desa_1'=> 'required|max:50',
+            'kecamatan_1'=> 'required|max:50',
+            'kodepos_1'=>'size:5',
+            'telepon_1'=> 'max:15',
+            'provinsi_2'=>'required',
+            'kabupaten_2'=>'required',
+            'kecamatan_2'=>'required',
+            'desa_2'=>'required',
+            'dusun_2'=> 'required|max:50',
+            'alamat_2'=>'required',
+            'rt_2' => 'max:3|required',
+            'rw_2'=>'max:3|required',
+            'kodepos_2'=>'size:5',
+            'telepon_2'=> 'max:15',
+            'scan_pengantar_rt_rw' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_kk' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_surat_nikah' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_skck' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'surat_pernyataan' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            
+        ],Kustom::validasi());
         $pemohon = Pemohon::create([
             'nama'  =>  $request['nama'],
             'kode'  => Kustom::generateKode(6),
@@ -680,6 +780,44 @@ class DesaV2 extends Controller
     public function FormPDAKab(Request $request)      
     {
         // dd($request->all());
+        $request->validate([
+            'nama' => 'required',
+            'nik' => 'required|min:16|max:18',
+            'telepon' => 'required',
+            'pekerjaan' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'jalan' => 'required',
+            'nomor_kk' => 'required|size:16',
+            'kepala_keluarga'=> 'required|max:50|string',
+            'alamat_1' => 'required',
+            'rt_1' => 'max:3|required',
+            'rw_1'=>'max:3|required',
+            'dusun_1'=> 'required|max:50',
+            'desa_1'=> 'required|max:50',
+            'kecamatan_1'=> 'required|max:50',
+            'kabupaten_1'=> 'required|max:50',
+            'provinsi_1'=> 'required|max:50',
+            'kodepos_1'=>'size:5',
+            'telepon_1'=> 'max:15',
+            'nomor_kk_2'=>'required|size:16',
+            'kepala_keluarga_2'=>'required',
+            'nik_kepala_keluarga_2'=>'required|size:16',
+            'tanggal_pindah'=>'required|date',
+            'alamat_2'=>'required',
+            'rt_2' => 'max:3|required',
+            'rw_2'=>'max:3|required',
+            'dusun_2'=> 'required|max:50',
+            'desa_2'=> 'required|max:50',
+            'kodepos_2'=>'size:5',
+            'telepon_2'=> 'max:15',
+            'buat_ktp_kk' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'form_138' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'form_139' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_surat_nikah' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            'scan_skck' => 'required | mimes:jpeg,jpg,png,PNG,pdf,txt | max:2048',
+            
+        ],Kustom::validasi());
         $pemohon = Pemohon::create([
             'nama'  =>  $request['nama'],
             'kode'  => Kustom::generateKode(6),
